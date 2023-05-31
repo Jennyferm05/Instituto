@@ -18,8 +18,20 @@ class ColegioControlller extends Controller
     {
         return view('colegio.docentes');
     }
-    public function alumnos()
+    public function materias()
     {
-        return view('colegio.alumnos');
+        return view('colegio.materias');
+    }
+    public function calificaciones()
+    {
+        return view('colegio.calificaciones');
+    }
+    public function horarios()
+    {
+        return view('colegio.horarios');
+    }
+    public function usuarios()
+    {
+        return view('colegio.usuarios');
     }
 }
