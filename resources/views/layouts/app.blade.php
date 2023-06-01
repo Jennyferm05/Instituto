@@ -68,29 +68,29 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}"><strong>{{ __('Inicio') }}</strong></a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Inicio') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('grupos') }}"><strong>{{ __('Grupos') }}</strong></a>
+                                <a class="nav-link" href="{{ route('grupos') }}">{{ __('Grupos') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('alumnos') }}"><strong>{{ __('Alumnos') }}</strong></a>
+                                <a class="nav-link" href="{{ route('alumnos') }}">{{ __('Alumnos') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Docentes') }}</strong></a>
+                                <a class="nav-link" href="{{ route('docentes') }}">{{ __('Docentes') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Materias') }}</strong></a>
+                                <a class="nav-link" href="{{ route('materias') }}">{{ __('Materias') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"
-                                    href="{{ route('login') }}"><strong>{{ __('Calificaciones') }}</strong></a>
+                                    href="{{ route('calificaciones') }}">{{ __('Calificaciones') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Horarios') }}</strong></a>
+                                <a class="nav-link" href="{{ route('horarios') }}">{{ __('Horarios') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Usuarios') }}</strong></a>
+                                <a class="nav-link" href="{{ route('usuarios') }}">{{ __('Usuarios') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">
