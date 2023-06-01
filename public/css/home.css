@@ -1,0 +1,15 @@
+
+
+.jumbotron {
+  background-image: url('https://blog.workana.com/wp-content/uploads/2019/02/Programador-freelance-Workana.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  height: 599px;
+}
+.image {
+  height: 100;
+  width: 200;
+}
+
+
