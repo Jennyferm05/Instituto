@@ -9,32 +9,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    @yield('css')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="../css/adminlte.min.css">
-    <link rel="stylesheet" href="../css/home.css">
-
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-    </script>
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -83,8 +69,7 @@
                                 <a class="nav-link" href="{{ route('materias') }}">{{ __('Materias') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
-                                    href="{{ route('calificaciones') }}">{{ __('Calificaciones') }}</a>
+                                <a class="nav-link" href="{{ route('calificaciones') }}">{{ __('Calificaciones') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('horarios') }}">{{ __('Horarios') }}</a>
@@ -92,12 +77,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('usuarios') }}">{{ __('Usuarios') }}</a>
                             </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><strong>
-                                        {{ Auth::user()->name }}
-                                    </strong></a>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -116,11 +100,11 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        <div class="jumbotron">
             @yield('content')
-        </main>
+        </div>
     </div>
+    @yield('js')
 </body>
 
 </html>

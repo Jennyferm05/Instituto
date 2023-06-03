@@ -27,3 +27,7 @@ Route::get('/Materias', [App\Http\Controllers\ColegioController::class, 'materia
 Route::get('/Calificaciones', [App\Http\Controllers\ColegioController::class, 'calificaciones'])->name('calificaciones');
 Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horarios'])->name('horarios');
 Route::get('/Usuarios', [App\Http\Controllers\ColegioController::class, 'usuarios'])->name('usuarios');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
