@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $pageTitle = 'Materias';
+@endphp
 
 @section('content')
 <div class="container text-center">

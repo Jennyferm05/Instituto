@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $pageTitle = 'Calificaciones';
+@endphp
 
 @section('content')
 <div class="container">

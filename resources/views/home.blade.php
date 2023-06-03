@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@php
+    $pageTitle = 'Inicio';
+@endphp
+
 @section('css')
     <link rel="stylesheet" href="../css/home.css">
 @endsection

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $pageTitle = 'Usuarios';
+@endphp
 
 @section('content')
 <div class="container">

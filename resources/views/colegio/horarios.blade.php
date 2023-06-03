@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $pageTitle = 'Horarios';
+@endphp
 
 @section('content')
     <div class="container">
