@@ -2,16 +2,15 @@
 @php
     $pageTitle = 'Inicio';
 @endphp
-
 @section('css')
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 @section('content')
-    <div class="container"><br>
-        <h1 class="display-4">WELCOME ADMIN</h1>
-        <p class="lead">Que Deseas Hacer?</p>
+        <div class="container"><br>
+            <h1 class="display-4">WELCOME ADMIN</h1>
+            <p class="lead">Que Deseas Hacer?</p>
+        </div>
     </div>
-</div>
     <br>
     <div class="container">
         <div class="row">

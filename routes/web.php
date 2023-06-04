@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/Grupos', [App\Http\Controllers\ColegioController::class, 'grupos'])->name('grupos');
 Route::get('/Alumnos', [App\Http\Controllers\ColegioController::class, 'alumnos'])->name('alumnos');
 Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'docentes'])->name('docentes');
@@ -28,6 +27,6 @@ Route::get('/Calificaciones', [App\Http\Controllers\ColegioController::class, 'c
 Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horarios'])->name('horarios');
 Route::get('/Usuarios', [App\Http\Controllers\ColegioController::class, 'usuarios'])->name('usuarios');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

@@ -4,6 +4,7 @@
 @endphp
 
 @section('content')
+<main class="py-4"></main>
 <div class="container text-center">
     <div class="row">
       <div class="col">
