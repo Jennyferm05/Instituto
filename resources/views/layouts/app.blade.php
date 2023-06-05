@@ -47,7 +47,7 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"><i class="fa-sharp fa-solid fa-right-to-bracket fa-xs" style="color: #000000;">{{ __(' Login') }}</i></a>
                             </li>
                         @endif
 
@@ -59,6 +59,9 @@
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house fa-xs" style="color: #000000;">{{ __(' Inicio') }}</i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('grupos') }}"><i class="fa-solid fa-users-between-lines fa-xs" style="color: #000000;">{{ __(' Grupos') }}</i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('alumnos') }}"><i class="fa-sharp fa-solid fa-school fa-xs" style="color: #000000;">{{ __(' Alumnos') }}</i></a>
