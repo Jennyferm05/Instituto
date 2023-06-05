@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Usuario;
-use App\Models\Calificacion; // Asegúrate de importar el modelo correspondiente
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 
-
-class CalificacionesController extends Controller
+class CalificacionController extends Controller
 {
     public function calificaciones()
     {

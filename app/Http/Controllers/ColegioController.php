@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grupo; //
+use App\Models\User; //
 
 use Illuminate\Http\Request;
 
@@ -20,16 +20,13 @@ class ColegioController extends Controller
     {
         return view('colegio.materias');
     }
-    public function calificaciones()
-    {
-        return view('colegio.calificaciones');
-    }
     public function horarios()
     {
         return view('colegio.horarios');
     }
     public function usuarios()
     {
-        return view('colegio.usuarios');
+        $users = User::all();
+        return view('colegio.usuarios', compact('users'));
     }
 }

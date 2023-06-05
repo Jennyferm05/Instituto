@@ -14,21 +14,24 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Rol</th>
-                        <th>Permisos</th>
+                        <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
+
                     <tr>
-                        <td></td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>U</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->password }}</td>
                     </tr>
+                    @endforeach
                 </tbody>
+
 
             </table>
         </div>

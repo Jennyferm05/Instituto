@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/Grupos', [App\Http\Controllers\GrupoController::class, 'grupos'])->
 Route::get('/Alumnos', [App\Http\Controllers\ColegioController::class, 'alumnos'])->name('alumnos');
 Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'docentes'])->name('docentes');
 Route::get('/Materias', [App\Http\Controllers\ColegioController::class, 'materias'])->name('materias');
-Route::get('/Calificaciones', [App\Http\Controllers\CalificacionesController::class, 'calificaciones'])->name('calificaciones');
+Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones');
 Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horarios'])->name('horarios');
 Route::get('/Usuarios', [App\Http\Controllers\ColegioController::class, 'usuarios'])->name('usuarios');
 
