@@ -8,10 +8,7 @@ use Illuminate\Http\Request;
 
 class ColegioController extends Controller
 {
-    public function alumnos()
-    {
-        return view('colegio.alumnos');
-    }
+
     public function docentes()
     {
         return view('colegio.docentes');
