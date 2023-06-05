@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grupo; //
+
 use Illuminate\Http\Request;
 
 class ColegioController extends Controller
 {
-    public function grupos()
-    {
-        return view('colegio.grupos');
-    }
     public function alumnos()
     {
         return view('colegio.alumnos');

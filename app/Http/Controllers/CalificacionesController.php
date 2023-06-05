@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use App\Models\Calificacion; // Asegúrate de importar el modelo correspondiente
@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class CalificacionesController extends Controller
 {
-    public function index()
+    public function calificaciones()
     {
         $calificaciones = Calificacion::all(); // Obtén todas las calificaciones desde la base de datos
 
-        return view('calificaciones.index', compact('calificaciones'));
+        return view('colegio.calificaciones', compact('calificaciones'));
     }
 
     public function store(Request $request)
