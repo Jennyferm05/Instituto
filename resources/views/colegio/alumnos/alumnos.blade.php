@@ -31,8 +31,10 @@
                             <td>{{ $alumno->apellido }}</td>
                             <td>{{ $alumno->edad }}</td>
                             <td>{{ $alumno->grupo_id }}</td>
-                            <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                <button class="btn btn-danger btn-sm" id="prueba" value="{{ $alumno->id }}"><i class="fas fa-backspace"></i></button>
+                            <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}" class="btn btn-info btn-sm"><i
+                                        class="fas fa-edit"></i></a>
+                                <button class="btn btn-danger btn-sm" id="prueba" value="{{ $alumno->id }}"><i
+                                        class="fas fa-backspace"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -40,51 +42,54 @@
 
 
             </table>
-
-
+        @section('js')
             <script>
-                $(document).ready(function () {
+                $(document).ready(function() {
                     $('#datatable').DataTable({
-                        "responsive": true, "lengthChange": false, "autoWidth": false,
+                        "responsive": true,
+                        "lengthChange": false,
+                        "autoWidth": false,
                         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                      }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+                    }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
-                });</script>
-                <script>
-                    $(document).on('click','#prueba',function(){
-                        var id = $(this).val()
-                        Swal.fire({
-                            title: 'Esta seguro?',
-                            text: "Esta acción no se puede revertir!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Si, borralo!',
-                            cancelButtonText: 'Cancelar'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire(
-                                    'Borrado!',
-                                    'El registro ha sido borrado.',
-                                    'success'
-                                    )
-                                    $(location).attr('href','{{ url('alumno/delete') }}/'+id);
-                            }
-                            })
-                        });
-                        </script>
-        </div>
-        <!-- /.card-body -->
+                });
+            </script>
+            <script>
+                $(document).on('click', '#prueba', function() {
+                    var id = $(this).val()
+                    Swal.fire({
+                        title: 'Esta seguro?',
+                        text: "Esta acción no se puede revertir!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, borralo!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Borrado!',
+                                'El registro ha sido borrado.',
+                                'success'
+                            )
+                            $(location).attr('href', '{{ url('alumno/delete') }}/' + id);
+                        }
+                    })
+                });
+            </script>
+        @endsection
     </div>
-    <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
 @endsection
