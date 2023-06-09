@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'subnombre',
-        'usuario_id',
+        'persona_id',
         'email',
         'password',
     ];
@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function usuario(){ // Accede a la información de la persona
-        return $this->belongsTo(Usuario::class);
+    public function Persona(){ // Accede a la información de la persona
+        return $this->belongsTo(Persona::class);
     }
 }

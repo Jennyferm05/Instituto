@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->enum("tipo_de_documento", ['Cédula de ciudadanía','Tarjeta de identidad','Cédula de extranjería','Registro civil']);
             $table->string('numero_de_documento')->unique();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('personas');
     }
 };

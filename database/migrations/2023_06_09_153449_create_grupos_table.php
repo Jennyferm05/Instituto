@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->enum("nivel", ["Primaria", "Secundaria"]);
-            $table->foreignId('coordinador_de_grado_id')->constrained('usuarios')->onDelete('cascade')->nullable();
+            $table->foreignId('profesor_id')->constrained('personas')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

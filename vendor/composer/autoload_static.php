@@ -146,6 +146,7 @@ class ComposerStaticInit4ac00c116daf763b76f9b22fa771d306
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
+            'ESolution\\DBEncryption\\' => 23,
         ),
         'D' => 
         array (
@@ -461,6 +462,10 @@ class ComposerStaticInit4ac00c116daf763b76f9b22fa771d306
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'ESolution\\DBEncryption\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -555,6 +560,7 @@ class ComposerStaticInit4ac00c116daf763b76f9b22fa771d306
         'App\\Models\\Eps' => __DIR__ . '/../..' . '/app/Models/Eps.php',
         'App\\Models\\Grupo' => __DIR__ . '/../..' . '/app/Models/Grupo.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\usuario' => __DIR__ . '/../..' . '/app/Models/usuario.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -678,6 +684,7 @@ class ComposerStaticInit4ac00c116daf763b76f9b22fa771d306
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Factories\\UsuarioFactory' => __DIR__ . '/../..' . '/database/factories/UsuarioFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\GrupoSeeder' => __DIR__ . '/../..' . '/database/seeders/GrupoSeeder.php',
         'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
@@ -797,6 +804,12 @@ class ComposerStaticInit4ac00c116daf763b76f9b22fa771d306
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'ESolution\\DBEncryption\\Builders\\EncryptionEloquentBuilder' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Builders/EncryptionEloquentBuilder.php',
+        'ESolution\\DBEncryption\\Console\\Commands\\DecryptModel' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Console/Commands/DecryptModel.php',
+        'ESolution\\DBEncryption\\Console\\Commands\\EncryptModel' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Console/Commands/EncryptModel.php',
+        'ESolution\\DBEncryption\\Encrypter' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Encrypter.php',
+        'ESolution\\DBEncryption\\Providers\\DBEncryptionServiceProvider' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Providers/DBEncryptionServiceProvider.php',
+        'ESolution\\DBEncryption\\Traits\\EncryptedAttribute' => __DIR__ . '/..' . '/elgibor-solution/laravel-database-encryption/src/Traits/EncryptedAttribute.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',

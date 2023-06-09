@@ -3,20 +3,20 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Usuario;
+use App\Models\Persona;
 use App\Models\Eps;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Usuario>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Persona>
  */
-class UsuarioFactory extends Factory
+class PersonaFactory extends Factory
 {
    /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = \App\Models\Usuario::class;
+    protected $model = \App\Models\Persona::class;
 
     /**
      * Define the model's default state.

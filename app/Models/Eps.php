@@ -9,7 +9,7 @@ class Eps extends Model
 {
     use HasFactory;
 
-    public function usuarios(){
+    public function personas(){
         return $this->hasMany(Usuario::class, 'eps_id');
     }
 }
