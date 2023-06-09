@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->subnombre }}</td>
-                        <td>{{ $user->usuario_id }}</td>
+                        <td>{{ $user->persona_id }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password }}</td>
                     </tr>
