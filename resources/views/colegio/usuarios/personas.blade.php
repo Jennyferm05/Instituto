@@ -6,7 +6,8 @@
 @section('content')
     <div id="tables" class="card">
         <div class="card-header">
-            <h3 class="card-title">Usuarios<span> && </span>Permisos</h3>
+            <div class="card-title">Personas Registradas
+            </div>
         </div>
         <!-- /.card-header -->
         <div id="tables" class="card-body">
@@ -31,7 +32,6 @@
                         <th>Correo</th>
                         <th>Telefono 1</th>
                         <th>Telefono 2</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +55,6 @@
                             <td>{{ $persona->correo }}</td>
                             <td>{{ $persona->telefono_1 }}</td>
                             <td>{{ $persona->telefono_2 }}</td>
-                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -6,7 +6,8 @@
 @section('content')
     <div id="tables" class="card">
         <div class="card-header">
-            <h3 class="card-title">Usuarios<span> && </span>Permisos</h3>
+            <div class="card-title">Usuarios<span> && </span>Permisos
+            </div>
         </div>
         <!-- /.card-header -->
         <div id="tables" class="card-body">
@@ -18,8 +19,7 @@
                         <th>Usuario_id</th>
                         <th>Correo</th>
                         <th>Contraseña</th>
-                        <th><a href="" class="btn btn-info btn-sm"><i
-                                    class="fas fa-edit"></i></a></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                             <td>{{ $user->persona_id }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->password }}</td>
-                            <td></td>
+
                         </tr>
                     @endforeach
                 </tbody>

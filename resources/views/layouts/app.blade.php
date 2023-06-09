@@ -91,7 +91,7 @@
                                 <a class="dropdown-item" href="{{ route('usuarios') }}">
                                     <i class="fa-solid fa-user fa-xs" style="color: #000000;"> Usuarios</i>
                                 </a>
-                                <a class="dropdown-item" href="{{ route('usuarios') }}">
+                                <a class="dropdown-item" href="{{ route('personas') }}">
                                     <i class="fa-solid fa-person fa-xs" style="color: #000000;"> Personas</i></a>
 
                             </div>
