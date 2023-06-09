@@ -15,7 +15,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
+                        <th>Subnombre</th>
+                        <th>Usuario_id</th>
                         <th>Correo</th>
                         <th>Contraseña</th>
                     </tr>
@@ -25,7 +26,8 @@
 
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->subnombre }}</td>
+                        <td>{{ $user->usuario_id }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password }}</td>
                     </tr>
