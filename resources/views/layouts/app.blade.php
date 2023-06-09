@@ -50,12 +50,6 @@
                                 <a class="nav-link" href="{{ route('login') }}"><i class="fa-sharp fa-solid fa-right-to-bracket fa-xs" style="color: #000000;">{{ __(' Login') }}</i></a>
                             </li>
                         @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house fa-xs" style="color: #000000;">{{ __(' Inicio') }}</i></a>
@@ -81,7 +75,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa-solid fa-user-tie fa-xs" style="color: #000000;">{{ Auth::user()->name }}</i>
+                                <i class="fa-solid fa-user-tie fa-xs" style="color: #000000;">{{ Auth::user()->subnombre }}</i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

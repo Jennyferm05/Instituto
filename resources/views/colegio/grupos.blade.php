@@ -16,13 +16,17 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
+                        <th>Nivel Educativo</th>
+                        <th>Cordinador De Grado</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($grupos as $grupo)
                         <tr>
                             <td>{{ $grupo->id }}</td>
-                            <td>{{ $grupo->Nombre }}</td>
+                            <td>{{ $grupo->nombre }}</td>
+                            <td>{{ $grupo->nivel }}</td>
+                            <td>{{ $grupo->coordinador_grado }}</td>
                         </tr>
                     @endforeach
                 </tbody>

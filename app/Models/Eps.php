@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuario extends Model
+class Eps extends Model
 {
     use HasFactory;
 
-    public function eps(){
-        return $this->belongsTo(EPS::class, 'eps_id');
+    public function usuarios(){
+        return $this->hasMany(Usuario::class, 'eps_id');
     }
 }

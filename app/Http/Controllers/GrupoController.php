@@ -10,15 +10,6 @@ class GrupoController extends Controller
     public function grupos()
     {
         $grupos = Grupo::all();
-        return view('colegio.alumno.add', compact('grupos'));
-    }
-    public function grupo_id(Request $request)
-    {
-        $grupo = new Grupo();
-        $grupo->nombre = $request->input('Nombre');
-        if ($grupo->save()) {
-            $grupo = Grupo::all();
-            return view('colegio.alumnos.alumnos',  compact('alumnos'));
-        }
+        return view('colegio.grupos', compact('grupos'));
     }
 }

@@ -25,7 +25,6 @@ Route::get('/Grupos', [App\Http\Controllers\GrupoController::class, 'grupos'])->
 
 
 Route::get('/Alumnos', [App\Http\Controllers\AlumnoController::class, 'alumnos'])->name('alumnos');
-Route::get('/Alumnos/Nuevo', [App\Http\Controllers\GrupoController::class, 'grupo_id'])->name('colegio.alumno.add');
 Route::get('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'getalumnoadd'])->name('colegio.alumno.add');
 Route::post('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'postalumnoadd'])->name('colegio.alumno.add');
 Route::get('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnoedit'])->name('colegio.alumno.edit');
