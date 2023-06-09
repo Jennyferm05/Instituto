@@ -21,9 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Ruta de grupos: solo vista
 Route::get('/Grupos', [App\Http\Controllers\GrupoController::class, 'grupos'])->name('grupos');
 
 
+//Rutas de alumnos: vista, agregar, editar y eliminar
 Route::get('/Alumnos', [App\Http\Controllers\AlumnoController::class, 'alumnos'])->name('alumnos');
 Route::get('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'getalumnoadd'])->name('colegio.alumno.add');
 Route::post('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'postalumnoadd'])->name('colegio.alumno.add');
@@ -37,8 +39,11 @@ Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'docente
 Route::get('/Materias', [App\Http\Controllers\ColegioController::class, 'materias'])->name('materias');
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones');
 Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horarios'])->name('horarios');
-Route::get('/Usuarios', [App\Http\Controllers\ColegioController::class, 'usuarios'])->name('usuarios');
 
+
+//Rutas de perfiles y permisos: vista, agregar, editar y eliminar
+Route::get('/Perfiles/Usuarios', [App\Http\Controllers\PersonaController::class, 'usuarios'])->name('usuarios');
+Route::get('/Perfiles/Personas', [App\Http\Controllers\PersonaController::class, 'personas'])->name('personas');
 
 
 

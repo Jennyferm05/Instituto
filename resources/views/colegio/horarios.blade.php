@@ -4,7 +4,6 @@
 @endphp
 
 @section('content')
-<main class="py-4"></main>
     <div class="container">
         <div class="row">
             <div class="col-9">
