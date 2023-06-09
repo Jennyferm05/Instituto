@@ -15,7 +15,7 @@ class PersonaSeeder extends Seeder
      */
     public function run(): void
     {
-        $numero_personas = 2; // Definir la cantidad de personas
+        $numero_personas = 50; // Definir la cantidad de personas
 
 
         $eps = EPS::firstOrCreate(['nombre' => 'NO REGISTRA']);
