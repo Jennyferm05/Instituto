@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('posts');
 
         $this->call(PersonaSeeder::class);
+        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+
     }
 }
