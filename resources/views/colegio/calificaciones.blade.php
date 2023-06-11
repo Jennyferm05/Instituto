@@ -44,17 +44,17 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Estudiante</th>
-                                <th>Asignatura</th>
-                                <th>Calificación</th>
+                                <th>Actividad Id</th>
+                                <th>Alumno Id</th>
+                                <th>Nota</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($calificaciones as $Calificacion)
                                 <tr>
                                     <td>{{ $Calificacion->id }}</td>
-                                    <td>{{ $Calificacion->estudiante }}</td>
-                                    <td>{{ $Calificacion->asignatura }}</td>
+                                    <td>{{ $Calificacion->actividad_id }}</td>
+                                    <td>{{ $Calificacion->alumno_id }}</td>
                                     <td>{{ $Calificacion->nota }}</td>
                                 </tr>
                             @endforeach

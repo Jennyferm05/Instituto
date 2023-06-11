@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 //use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Grupo;
+use App\Models\Grado;
 
 class GrupoSeeder extends Seeder
 {
@@ -14,11 +14,11 @@ class GrupoSeeder extends Seeder
 
     public function run(): void
     {
-        Grupo::create([
+        Grado::create([
             "nombre" => 'Junior Medina',
             "nivel" => 'Primaria',
             "coordinador_grado" => 'Saira Sanceno',
         ]);
-        Grupo::factory(0)->create();
+        Grado::factory(0)->create();
     }
 }

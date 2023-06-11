@@ -9,36 +9,34 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header bg-warning">Agregar Alumnos</div>
-
                     <div class="card-body">
-                        {!! Form::open(['url' => route('colegio.alumno.add')]) !!}
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            {!! Form::text('nombre', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="mb-3">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            {!! Form::text('apellido', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="mb-3">
-                            <label for="edad" class="form-label">Edad</label>
-                            {!! Form::number('edad', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="mb-3">
-                            <label for="grupo_id" class="form-label">Seleccione Grupo</label>
-                            <select class="form-control" name="grupo_id" id="grupo_id" required>
-                                <option value="">Seleccionar</option>
-                                @foreach ($grupos as $grupo)
-                                    <option value="{{ $grupo->id }}">{{ $grupo->Nombre }}</option>
+                        <form action="{{ route('colegio.alumno.add') }}" method="POST">
+                            @csrf
+
+                            <label for="persona_id">Selecciona Persona Id:</label>
+                            <select class="form-control" name="persona_id" id="persona_id">
+                                @foreach ($personas as $persona)
+                                    <option value="{{ $persona->id }}">{{ $persona->primer_nombre }}
+                                        {{ $persona->primer_apellido }}</option>
                                 @endforeach
-                            </select>
+                            </select><br>
+                            <label for="grado_id">Selecciona Grado Id:</label>
+                            <select class="form-control" name="grado_id" id="grado_id">
+                                @foreach ($grados as $grado)
+                                    <option value="{{ $grado->id }}">{{ $grado->nombre }}</option>
+                                @endforeach
+                            </select><br>
+                            <label for="jornada_id">Selecciona Jornada Id:</label>
+                            <select class="form-control" name="jornada_id" id="jornada_id">
+                                @foreach ($jornadas as $jornada)
+                                    <option value="{{ $jornada->id }}">{{ $jornada->nombre }}
+                                    </option>
+                                @endforeach
+                            </select><br>
 
-                        </div>
-
-                        {!! Form::submit('Agregar', ['class' => 'btn btn-primary', 'name' => 'agregar']) !!}
-                        <a href="{{ route('alumnos')}}" class="btn btn-danger btn-xl">Cancelar</a>
-                        {!! Form::close('Salir') !!}
-
+                            <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>
+                            <a href="{{ route('alumnos') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                        </form>
                     </div>
                 </div>
             </div>

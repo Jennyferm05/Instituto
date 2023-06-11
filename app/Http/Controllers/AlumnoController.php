@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno; //
-use App\Models\Grupo;
+use App\Models\Grado;
+use App\Models\Persona;
+use App\Models\Jornada;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -31,17 +33,20 @@ class AlumnoController extends Controller
 
     public function getalumnoadd()
     {
-        $grupos = Grupo::all();
-        return view('colegio.alumnos.add', compact('grupos'));
+        $alumnos = Alumno::get();
+        $personas = Persona::all();
+        $grados = Grado::all();
+        $jornadas = Jornada::all();
+        $data = ['alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
+        return view('colegio.alumnos.add',$data);
     }
 
     public function postalumnoadd(Request $request)
     {
         $alumno = new Alumno();
-        $alumno->nombre = $request->input('nombre');
-        $alumno->apellido = $request->input('nombre');
-        $alumno->edad = $request->input('edad');
-        $alumno->grupo_id= $request->input('grupo_id');
+        $alumno->persona_id = $request->input('persona_id');
+        $alumno->grado_id = $request->input('grado_id');
+        $alumno->jornada_id = $request->input('jornada_id');
         if ($alumno->save()) {
             $alumnos = Alumno::all();
             return view('colegio.alumnos.alumnos',  compact('alumnos'));
@@ -50,23 +55,26 @@ class AlumnoController extends Controller
     public function getalumnoedit($id)
     {
         $alumnos = Alumno::get();
-        $grupos = Grupo::all();
+        $personas = Persona::all();
+        $grados = Grado::all();
+        $jornadas = Jornada::all();
         $alumno = Alumno::findOrFail($id);
-        $data = ['alumno'=>$alumno,'grupos'=>$grupos,'alumnos'=>$alumnos];
+        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
 
         return view('colegio.alumnos.edit',$data);
     }
     public function postalumnoedit(Request $request, $id)
     {
         $alumno = Alumno::findOrFail($id);
-        $alumno->nombre = $request->input('nombre');
-        $alumno->apellido = $request->input('nombre');
-        $alumno->edad = $request->input('edad');
-        $alumno->grupo_id= $request->input('grupo_id');
+        $alumno->persona_id = $request->input('persona_id');
+        $alumno->grado_id = $request->input('grado_id');
+        $alumno->jornada_id = $request->input('jornada_id');
         if($alumno->save()){
             $alumnos = Alumno::get();
-            $grupos = Grupo::all();
-            $data = ['alumno'=>$alumno,'grupos'=>$grupos,'alumnos'=>$alumnos];
+        $personas = Persona::all();
+        $grados = Grado::all();
+        $jornadas = Jornada::all();
+        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
             return view('colegio.alumnos.alumnos',$data);
     }
     }

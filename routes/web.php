@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('can:home')->name('home');
 
 //Ruta de grupos: solo vista
-Route::get('/Grupos', [App\Http\Controllers\GrupoController::class, 'grupos'])->middleware('can:grupos')->name('grupos');
+Route::get('/Grados', [App\Http\Controllers\GradoController::class, 'grados'])->middleware('can:grados')->name('grados');
 
 
 //Rutas de alumnos: vista, agregar, editar y eliminar
@@ -44,6 +44,3 @@ Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horario
 //Rutas de perfiles y permisos: vista, agregar, editar y eliminar
 Route::get('/Perfiles/Usuarios', [App\Http\Controllers\PersonaController::class, 'usuarios'])->middleware('can:usuarios')->name('usuarios');
 Route::get('/Perfiles/Personas', [App\Http\Controllers\PersonaController::class, 'personas'])->middleware('can:personas')->name('personas');
-
-
-

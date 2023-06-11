@@ -2,9 +2,7 @@
 @php
     $pageTitle = 'Inicio';
 @endphp
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-@endsection
+
 @section('content')
     <div class="jumbotron">
         <div class="container">

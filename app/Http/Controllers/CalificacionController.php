@@ -32,9 +32,9 @@ class CalificacionController extends Controller
     {
         // Validar y guardar los datos enviados desde el formulario en la base de datos
         $request->validate([
-            'estudiante' => 'required',
-            'asignatura' => 'required',
-            'calificacion' => 'required|numeric',
+            'actividad_id' => 'required',
+            'alumno_id' => 'required',
+            'nota' => 'required|numeric',
         ]);
 
         Calificacion::create($request->all());
