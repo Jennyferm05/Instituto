@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => "getalumnoadd"])->assignRole([$role1]);
         Permission::create(['name' => "postalumnoadd"])->assignRole([$role1]);
         Permission::create(['name' => "colegio.alumno.edit"])->assignRole([$role1]);
-        Permission::create(['name' => "colegio.alumno."])->assignRole([$role1]);
+        Permission::create(['name' => "postalumnoedit"])->assignRole([$role1]);
         Permission::create(['name' => "colegio.alumno.delete"])->assignRole([$role1]);
         Permission::create(['name' => "docentes"])->syncRoles([$role1, $role2]);
         Permission::create(['name' => "materias"])->assignRole([$role1]);

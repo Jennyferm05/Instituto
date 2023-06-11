@@ -4,7 +4,7 @@
 @endphp
 
 @section('content')
-    <div class="jumbotron">
+    <div id="home" class="jumbotron">
         <div class="container">
 
             <h1 class="display-4">WELCOME ADMIN</h1>
