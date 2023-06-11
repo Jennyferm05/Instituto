@@ -1,3 +1,18 @@
-.card-body {
-    background-image: url('https://thehubbackend.com/media/4154-teamworking.jpg');
+.custom-background {
+    background-image: url('https://images6.alphacoders.com/130/1308016.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #f7f7f7;
+    height: 700px;
+}
+
+#js {
+    margin-top: 10%;
+}
+
+#jm {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 3%;
+    padding-bottom: 5%;
 }

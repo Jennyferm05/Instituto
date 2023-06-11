@@ -9,11 +9,10 @@
     <div class="custom-background">
         <main class="py-4">
             <div class="container">
-                <div class="row justify-content-center">
+                <div id="js" class="row justify-content-center">
                     <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">{{ __('Login') }}</div>
-
+                        <div id="jm" class="card">
+                            <div class="card-header dt-center">{{ __('Login') }}</div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
@@ -84,6 +83,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
 @endsection

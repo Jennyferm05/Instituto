@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 @section('content')
-        <div class="container"><br>
+    <div class="jumbotron">
+        <div class="container">
+
             <h1 class="display-4">WELCOME ADMIN</h1>
             <p class="lead">Que Deseas Hacer?</p>
         </div>

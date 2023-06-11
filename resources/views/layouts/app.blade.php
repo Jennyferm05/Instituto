@@ -120,9 +120,9 @@
             </div>
         </div>
     </nav>
-    <div class="jumbotron">
-        @yield('content')
-    </div>
+
+    @yield('content')
+
 
 
     @yield('js')
