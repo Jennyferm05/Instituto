@@ -52,43 +52,61 @@
                             <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house fa-xs"
                                     style="color: #000000;">{{ __(' Inicio') }}</i></a>
                         </li>
+                        @can('grados')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('grados') }}"><i
                                     class="fa-solid fa-users-between-lines fa-xs"
                                     style="color: #000000;">{{ __(' Grados') }}</i></a>
                         </li>
+                        @endcan
+                        @can('alumnos')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('alumnos') }}"><i class="fa-sharp fa-solid fa-school fa-xs"
                                     style="color: #000000;">{{ __(' Alumnos') }}</i></a>
                         </li>
+                        @endcan
+                        @can('docentes')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('docentes') }}"><i class="fa-solid fa-chalkboard-user fa-xs"
                                     style="color: #000000;">{{ __(' Docentes') }}</i></a>
                         </li>
+                        @endcan
+                        @can('calificaciones')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('calificaciones') }}"><i
                                     class="fa-sharp fa-solid fa-arrow-down-1-9 fa-xs"
                                     style="color: #000000;">{{ __(' Calificaciones') }}</i></a>
                         </li>
+                        @endcan
+                        @can('horarios')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('horarios') }}"><i class="fa-sharp fa-solid fa-clock  fa-xs"
                                     style="color: #000000;">{{ __(' Horarios') }}</i></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                    class="fa-solid fa-user-tie fa-xs" style="color: #000000;">
-                                    Perfiles
-                                </i></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="{{ route('usuarios') }}">
-                                    <i class="fa-solid fa-user fa-xs" style="color: #000000;"> Usuarios</i>
+                        @endcan
+                        @can('usuarios')
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa-solid fa-user-tie fa-xs" style="color: #000000;">
+                                        Perfiles
+                                    </i>
                                 </a>
-                                <a class="dropdown-item" href="{{ route('personas') }}">
-                                    <i class="fa-solid fa-person fa-xs" style="color: #000000;"> Personas</i></a>
 
-                            </div>
-                        </li>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('usuarios') }}">
+                                        <i class="fa-solid fa-user fa-xs" style="color: #000000;"> Usuarios</i>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('personas') }}">
+                                        <i class="fa-solid fa-person fa-xs" style="color: #000000;"> Personas</i></a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endcan
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
