@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Horario;
+use App\Models\Materia;
+use App\Models\Grado;
 
 class MateriaController extends Controller
 {
@@ -21,8 +24,15 @@ class MateriaController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function mostrar_materia(Request $request)
     {
-        //
+        $materias = Materia::all();
+        $materia_id = $materias->pluck('materia_id')->toArray();
+        $horarios = Horario::whereIn('id', $materia_id)->get();
+
+        return view('colegio.horarios.mostrar_horarios', [
+            'horarios' => $horarios,
+            'materias' => $materias
+        ]);
     }
 }

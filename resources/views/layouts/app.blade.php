@@ -78,9 +78,9 @@
                                     style="color: #000000;">{{ __(' Calificaciones') }}</i></a>
                         </li>
                         @endcan
-                        @can('horarios')
+                        @can('mostrarhorarios')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('horarios') }}"><i class="fa-sharp fa-solid fa-clock  fa-xs"
+                            <a class="nav-link" href="{{ route('mostrarhorarios') }}"><i class="fa-sharp fa-solid fa-clock  fa-xs"
                                     style="color: #000000;">{{ __(' Horarios') }}</i></a>
                         </li>
                         @endcan

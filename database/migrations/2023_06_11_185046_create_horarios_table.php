@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->enum("dia_de_la_semana", ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']);
+            $table->string('dia_de_la_semana');
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->foreignId('materia_id')->constrained('materias')->onDelete('cascade');
-            $table->foreignId('docente_id')->constrained('docentes')->onDelete('cascade');
+            $table->foreignId('grado_id')->constrained('grados')->onDelete('cascade');
             $table->timestamps();
         });
     }

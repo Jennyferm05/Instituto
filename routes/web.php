@@ -35,11 +35,19 @@ Route::post('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class,
 Route::get('/Alumnos/delete/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnodelete'])->middleware('can:colegio.alumno.delete')->name('colegio.alumno.delete');
 
 
-
+//Rutas de docenstes
 Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'docentes'])->middleware('can:docentes')->name('docentes');
 Route::get('/Materias', [App\Http\Controllers\ColegioController::class, 'materias'])->middleware('can:materias')->name('materias');
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->middleware('can:calificaciones')->name('calificaciones');
-Route::get('/Horarios', [App\Http\Controllers\ColegioController::class, 'horarios'])->middleware('can:horarios')->name('horarios');
+
+
+//Ruta de horarios
+Route::get('/Horarios', [App\Http\Controllers\HorarioController::class, 'mostrarhorarios'])->middleware('can:mostrarhorarios')->name('mostrarhorarios');
+Route::get('/Horarios/filtro', [App\Http\Controllers\HorarioController::class,'filtro'])->middleware('can:filtro')->name('filtro');
+Route::get('/Horarios/materia', [App\Http\Controllers\MateriaController::class, 'mostrar_materia'])->middleware('can:mostrar_materia')->name('mostrar_materia');
+Route::get('/Horarios/grado', [App\Http\Controllers\ColegioController::class, 'mostrar_grado'])->middleware('can:mostrar_grado')->name('mostrar_grado');
+Route::get('/Horarios/Nuevos', [App\Http\Controllers\HorarioController::class, 'nuevo_horario'])->middleware('can:nuevo_horario')->name('nuevo_horario');
+Route::post('/Horarios/Nuevo', [App\Http\Controllers\HorarioController::class, 'store'])->middleware('can:store')->name('store');
 
 
 //Rutas de perfiles y permisos: vista, agregar, editar y eliminar
