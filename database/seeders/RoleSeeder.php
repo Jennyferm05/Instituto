@@ -20,6 +20,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => "home"])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => "grados"])->syncRoles([$role1, $role2]);
         Permission::create(['name' => "alumnos"])->syncRoles([$role1, $role2, $role3]);
+        Permission::create(['name' => "mostraralumnos"])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => "getalumnoadd"])->assignRole([$role1]);
         Permission::create(['name' => "postalumnoadd"])->assignRole([$role1]);
         Permission::create(['name' => "colegio.alumno.edit"])->assignRole([$role1]);
@@ -30,6 +31,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => "calificaciones"])->syncRoles([$role1, $role2]);
         Permission::create(['name' => "horarios"])->syncRoles([$role1, $role2]);
         Permission::create(['name' => "usuarios"])->assignRole([$role1]);
+        Permission::create(['name' => "mostrarusuarios"])->assignRole([$role1]);
+        Permission::create(['name' => "asignar_rol"])->assignRole([$role1]);
+        Permission::create(['name' => "rol_asignado"])->assignRole([$role1]);
+        Permission::create(['name' => "crear_usuarios"])->assignRole([$role1]);
+        Permission::create(['name' => "usuario_nuevo"])->assignRole([$role1]);
         Permission::create(['name' => "personas"])->assignRole([$role1]);
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;
@@ -48,4 +49,5 @@ class User extends Authenticatable
     public function Persona(){ // Accede a la información de la persona
         return $this->belongsTo(Persona::class);
     }
+
 }

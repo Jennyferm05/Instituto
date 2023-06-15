@@ -20,10 +20,13 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Persona Id</th>
+                                    <th>Nombres</th>
                                     <th>Grado Id</th>
                                     <th>Jornada</th>
-                                    <th><a href="{{ route('colegio.alumno.add') }}" class="btn btn-success btn-sm"><i
-                                                class="fas fa-plus"></i></a></th>
+                                    @can('getalumnoadd')
+                                        <th><a href="{{ route('colegio.alumno.add') }}" class="btn btn-success btn-sm"><i
+                                                    class="fas fa-plus"></i></a></th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,22 +34,31 @@
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
                                         <td>{{ $alumno->persona_id }}</td>
-                                        <td>{{ $alumno->grado_id }}</td>
-                                        <td>{{ $alumno->jornada_id }}</td>
+                                        @foreach ($personas as $persona)
+                                            @if ($alumno->persona_id == $persona->id)
+                                                <td>{{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    <td>{{ $alumno->grado_id }}</td>
+                                    <td>{{ $alumno->jornada_id }}</td>
+
+                                    @can('getalumnoadd')
                                         <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
                                                 class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                             <button class="btn btn-danger btn-sm" id="prueba"
                                                 value="{{ $alumno->id }}"><i class="fas fa-backspace"></i></button>
                                         </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                    @endcan
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 @section('scripts')
 @show

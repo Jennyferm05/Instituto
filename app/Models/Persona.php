@@ -12,4 +12,8 @@ class Persona extends Model
     public function eps(){
         return $this->belongsTo(EPS::class, 'eps_id');
     }
+    public function roles()
+{
+    return $this->belongsToMany(Role::class);
+}
 }

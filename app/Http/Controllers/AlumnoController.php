@@ -25,10 +25,12 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function alumnos()
+    public function mostraralumnos()
     {
+        $personas = Persona::all();
         $alumnos = Alumno::all();
-        return view('colegio.alumnos.alumnos', compact('alumnos'));
+        return view('colegio.alumnos.alumnos', compact('alumnos', 'personas'));
+
     }
 
     public function getalumnoadd()
@@ -52,6 +54,18 @@ class AlumnoController extends Controller
             return view('colegio.alumnos.alumnos',  compact('alumnos'));
         }
     }
+
+    public function alumnos(Request $request)
+{
+    $personas = Persona::all();
+    $persona_id = $personas->pluck('persona_id')->toArray();
+    $alumnos = Alumno::whereIn('id', $persona_id)->get();
+
+    return view('colegio.alumnos.alumnos', [
+        'alumnos' => $alumnos,
+        'personas' => $personas
+    ]);
+}
     public function getalumnoedit($id)
     {
         $alumnos = Alumno::get();

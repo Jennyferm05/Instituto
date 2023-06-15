@@ -35,7 +35,7 @@
                             </select><br>
 
                             <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>
-                            <a href="{{ route('alumnos') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                            <a href="{{ route('mostraralumnos') }}" class="btn btn-danger btn-xl">Cancelar</a>
                         </form>
                     </div>
                 </div>

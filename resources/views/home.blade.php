@@ -7,7 +7,7 @@
     <div id="home" class="jumbotron">
         <div class="container">
 
-            <h1 class="display-4">WELCOME ADMIN</h1>
+            <h1 class="display-4">WELCOME</h1>
             <p class="lead">Que Deseas Hacer?</p>
         </div>
     </div>
@@ -18,13 +18,13 @@
                 <div class="card" style="width: 12rem;">
                     <img src="{{ asset('img/students.png') }}" class="card-img-top" alt="..." height="220">
                     <div class="card-body">
-                        <p href="{{ route('alumnos') }}"><strong>Registrar Alumnos</strong></p>
+                        <p class="text-center"><strong>Registrar Alumnos</strong></p>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="card" style="width: 12rem;">
-                    <img src="https://images6.alphacoders.com/130/1308016.jpg" class="card-img-top" alt="..."
+                    <img src="{{ asset('img/imagendos.png') }}" class="card-img-top" alt="..."
                         height="220">
                     <div class="card-body">
                         <p class="text-center"><strong>Administrar Grupos</strong></p>
@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col">
                 <div class="card" style="width: 12rem;">
-                    <img src="{{ asset('img/grafico.png') }}" class="card-img-top" alt="..." height="200">
+                    <img src="{{ asset('img/grafico.png') }}" class="card-img-top" alt="..." height="220">
                     <div class="card-body">
                         <p class="text-center"><strong>Gráficos De Crecimiento</strong></p>
                     </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="col">
                 <div class="card" style="width: 12rem;">
-                    <img src="{{ asset('img/calificaciones.png') }}" class="card-img-top" alt="..." height="200">
+                    <img src="{{ asset('img/calificaciones.png') }}" class="card-img-top" alt="..." height="220">
                     <div class="card-body">
                         <p class="text-center"><strong>Registrar Calificaciones</strong></p>
                     </div>

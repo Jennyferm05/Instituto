@@ -4,50 +4,67 @@
 @endphp
 
 @section('content')
-    <div id="tables" class="card">
-        <div class="card-header">
-            <div class="card-title">Usuarios<span> && </span>Permisos
+    <main class="py-4"></main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Usuarios Registrados</div>
+
+                    <div class="card-body">
+                        <table id="datatable" class="table table-sm table-striped">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Subnombre</th>
+                                    <th>Persona_id</th>
+                                    <th>Nombres</th>
+
+                                    <th>Correo</th>
+                                    <th><a href="{{ route('crear') }}" class="btn btn-success btn-sm"><i
+                                                class="fas fa-plus"></i></a></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->subnombre }}</td>
+                                        <td>{{ $user->persona_id }}</td>
+                                        @foreach ($personas as $persona)
+                                            @if ($user->persona_id == $persona->id)
+                                                <td>{{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                            @break
+                                        @endif
+                                    @endforeach
+
+
+                                    <td>{{ $user->email }}</td>
+                                    <td><a href="{{ route('asignar_rol', $user) }}" class="btn btn-warning btn-sm"><i class="fa-brands fa-atlassian" style="color: #000000;"></i></a>
+                                        <a href="" class="btn btn-info btn-sm"><i class="fa-solid fa-user-pen" style="color: #000000;"></i></a>
+                                        <button class="btn btn-danger btn-sm" id="prueba"
+                                        value=""><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+
+                                    </td>
+
+
+
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <!-- /.card-header -->
-        <div id="tables" class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Subnombre</th>
-                        <th>Usuario_id</th>
-                        <th>Correo</th>
-                        <th>Contraseña</th>
+    </div>
+</div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->subnombre }}</td>
-                            <td>{{ $user->persona_id }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->password }}</td>
+@section('scripts')
+@show
 
-                        </tr>
-                    @endforeach
-                </tbody>
-
-
-            </table>
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-    </div>
-    <!-- /.col -->
-    </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    </div>
+@section('dataTables')
+@show
 @endsection

@@ -13,6 +13,7 @@ use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\RefreshesPermissionCache;
 
+
 /**
  * @property int $id
  * @property string $name
@@ -194,4 +195,8 @@ class Role extends Model implements RoleContract
 
         return $this->permissions->contains($permission->getKeyName(), $permission->getKey());
     }
+    /**
+     * Summary of users
+     * @return BelongsToMany
+     */
 }

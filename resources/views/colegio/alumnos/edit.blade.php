@@ -13,31 +13,41 @@
                     <form action="{{ route('colegio.alumno.edit', $alumno->id) }}" method="POST">
                         @csrf
 
-                        <div class="form-group">
+                        <div class="col-auto"><br>
                             <label for="persona_id">Selecciona Persona Id:</label>
                             <select class="form-control" name="persona_id" id="persona_id">
+                                <option value="">Selecciona Persona</option>
                                 @foreach ($personas as $persona)
                                     <option value="{{ $persona->id }}">{{ $persona->primer_nombre }}
                                         {{ $persona->primer_apellido }}</option>
                                 @endforeach
-                            </select><br>
+                            </select>
+
+                        </div><br>
+                        <div class="col-auto">
                             <label for="grado_id">Selecciona Grado Id:</label>
                             <select class="form-control" name="grado_id" id="grado_id">
+                                <option value="">Selecciona Grado</option>
                                 @foreach ($grados as $grado)
                                     <option value="{{ $grado->id }}">{{ $grado->nombre }}</option>
                                 @endforeach
-                            </select><br>
+                            </select>
+                        </div><br>
+                        <div class="col-auto">
                             <label for="jornada_id">Selecciona Jornada Id:</label>
                             <select class="form-control" name="jornada_id" id="jornada_id">
+                                <option value="">Selecciona Jornada</option>
                                 @foreach ($jornadas as $jornada)
                                     <option value="{{ $jornada->id }}">{{ $jornada->nombre }}
                                     </option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div><br>
+                        <div class="col-auto">
 
                         <button class="btn btn-primary" name="agregar" type="submit">Modificar</button>
-                        <a href="{{ route('alumnos') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                        <a href="{{ route('mostraralumnos') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                        </div><br>
                     </form>
 
                 </div>

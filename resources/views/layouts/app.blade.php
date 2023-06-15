@@ -59,9 +59,9 @@
                                     style="color: #000000;">{{ __(' Grados') }}</i></a>
                         </li>
                         @endcan
-                        @can('alumnos')
+                        @can('mostraralumnos')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('alumnos') }}"><i class="fa-sharp fa-solid fa-school fa-xs"
+                            <a class="nav-link" href="{{ route('mostraralumnos') }}"><i class="fa-sharp fa-solid fa-school fa-xs"
                                     style="color: #000000;">{{ __(' Alumnos') }}</i></a>
                         </li>
                         @endcan
@@ -95,7 +95,7 @@
 
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('usuarios') }}">
+                                    <a class="dropdown-item" href="{{ route('mostrarpersonas') }}">
                                         <i class="fa-solid fa-user fa-xs" style="color: #000000;"> Usuarios</i>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('personas') }}">
