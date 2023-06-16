@@ -67,7 +67,7 @@
                         @endcan
                         @can('docentes')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('docentes') }}"><i class="fa-solid fa-chalkboard-user fa-xs"
+                            <a class="nav-link" href="{{ route('mostrardocentes') }}"><i class="fa-solid fa-chalkboard-user fa-xs"
                                     style="color: #000000;">{{ __(' Docentes') }}</i></a>
                         </li>
                         @endcan

@@ -51,7 +51,8 @@ class AlumnoController extends Controller
         $alumno->jornada_id = $request->input('jornada_id');
         if ($alumno->save()) {
             $alumnos = Alumno::all();
-            return view('colegio.alumnos.alumnos',  compact('alumnos'));
+            $personas = Persona::all();
+            return view('colegio.alumnos.alumnos',  compact('alumnos', 'personas'));
         }
     }
 

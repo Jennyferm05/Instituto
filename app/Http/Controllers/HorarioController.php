@@ -31,7 +31,7 @@ class HorarioController extends Controller
         return view('colegio.horarios.horarios', compact('materias', 'grados'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Horario $horarios)
     {
 
         $request->validate([
@@ -41,7 +41,7 @@ class HorarioController extends Controller
             'materia_id' => 'required',
         ]);
 
-        Horario::create($request->all());
+        $horarios = Horario::create($request->all());
 
         return redirect()->route('mostrarhorarios')
             ->with('success', 'Horario creado correctamente');

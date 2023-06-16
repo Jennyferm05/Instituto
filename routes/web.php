@@ -61,3 +61,13 @@ Route::get('/Perfiles/Usuarios/Nuevo',  [App\Http\Controllers\PersonaController:
 Route::post('/Perfiles/Usuarios/Nuevo',  [App\Http\Controllers\PersonaController::class, 'usuario_nuevo'])->middleware('can:usuario_nuevo')->name('usuario_nuevo');
 
 Route::get('/Perfiles/Personas', [App\Http\Controllers\PersonaController::class, 'personas'])->middleware('can:personas')->name('personas');
+
+
+//Rutas de docente: vista, agregar, editar y eliminar
+Route::get('/Docentes', [App\Http\Controllers\DocenteController::class, 'docentes'])->middleware('can:docentes')->name('docentes');
+Route::get('/Docentes',  [App\Http\Controllers\DocenteController::class, 'mostrardocentes'])->name('mostrardocentes');
+Route::get('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'getdocenteodd'])->name('colegio.alumno.odd');
+Route::post('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'postdocenteodd'])->name('colegio.alumno.odd');
+Route::get('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'getdocenteedot'])->name('colegio.alumno.edot');
+Route::post('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('colegio.alumno.edot');
+Route::get('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::class, 'getdocentedelete'])->name('colegio.alumno.delete');
