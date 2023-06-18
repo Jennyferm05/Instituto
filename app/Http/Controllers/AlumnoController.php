@@ -101,4 +101,70 @@ class AlumnoController extends Controller
         $data = ['alumno'=>$alumno,'alumnos'=>$alumnos];
             return view('colegio.alumnos.alumnos',$data)->with('eliminar', 'ok');
     }
+
+
+
+// AlumnoController.php
+public function index()
+{
+    $alumnos = Alumno::all();
+    return view('alumnos.index', compact('alumnos'));
+}
+
+
+
+
+
+
+
+public function create()
+{
+    $alumnos = Alumno::all();
+    $docentes = Docente::all();
+    $actividades = Actividad::all();
+    return view('calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
+}
+
+public function store(Request $request)
+{
+    $request->validate([
+        'alumno_id' => 'required',
+        'docente_id' => 'required',
+        'actividad_id' => 'required',
+        'nota1' => 'required|numeric',
+        'nota2' => 'required|numeric',
+        'nota3' => 'required|numeric',
+    ]);
+
+    Calificacion::create($request->all());
+
+    return redirect()->route('calificaciones.index')->with('success', 'Calificación guardada exitosamente.');
+}
+
+public function edit(Calificacion $calificacion)
+{
+    $alumnos = Alumno::all();
+    $docentes = Docente::all();
+    $actividades = Actividad::all();
+    return view('calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
+}
+
+public function update(Request $request, Calificacion $calificacion)
+{
+    $request->validate([
+        'alumno_id' => 'required',
+        'docente_id' => 'required',
+        'actividad_id' => 'required',
+        'nota1' => 'required|numeric',
+        'nota2' => 'required|numeric',
+        'nota3' => 'required|numeric',
+    ]);
+
+    $calificacion->update($request->all());
+
+    return redirect()->route('calificaciones.index')->with('success', 'Calificación actualizada exitosamente.');
+}
+
+
+
 }

@@ -71,3 +71,14 @@ Route::post('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, '
 Route::get('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'getdocenteedot'])->name('colegio.alumno.edot');
 Route::post('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('colegio.alumno.edot');
 Route::get('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::class, 'getdocentedelete'])->name('colegio.alumno.delete');
+
+
+
+
+
+Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones');
+Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'mostrarcalificaciones'])->name('mostrarcalificaciones');
+Route::get('/Calificaciones/create', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones.create');
+Route::post('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'store'])->name('ccolegio.calificaciones');
+Route::get('/Calificaciones/{calificacion}/edit', [App\Http\Controllers\CalificacionController::class, 'edit'])->name('calificaciones.edit');
+Route::put('/Calificaciones/{calificacion}', [App\Http\Controllers\CalificacionController::class, 'update'])->name('calificaciones.update');
