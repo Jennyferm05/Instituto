@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('calificacions', function (Blueprint $table) {
-             $table->id();
-        $table->foreignId('alumno_id')->constrained('alumnos')->onDelete('cascade');
-        $table->foreignId('docente_id')->constrained('docentes')->onDelete('cascade');
-        $table->foreignId('actividad_id')->constrained('actividades')->onDelete('cascade');
-        $table->float('nota1');
-        $table->float('nota2');
-        $table->float('nota3');
-        $table->timestamps();
+            $table->id();
+            $table->foreignId('alumno_id')->constrained('alumnos')->onDelete('cascade');
+            $table->foreignId('docente_id')->constrained('docentes')->onDelete('cascade');
+            $table->foreignId('actividad_id')->constrained('actividads')->onDelete('cascade');
+            $table->float('nota1');
+            $table->float('nota2');
+            $table->float('nota3');
+            $table->timestamps();
         });
     }
 

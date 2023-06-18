@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Materia;
 use App\Models\Grado;
 use App\Models\Persona;
+use Illuminate\Validation\Rule;
 
 class MateriaController extends Controller
 {
@@ -37,21 +38,27 @@ class MateriaController extends Controller
         $docentes = Docente::all();
         return view('colegio.registros.materias', compact('docentes'));
     }
-    public function postmaterias(Request $request, Materia $materias)
+    public function postmaterias(Request $request)
     {
+        $docente_id = $request->input('docente_id');
+        $docente = Docente::with('persona')->find($docente_id);
+        $primer_nombre = $docente->persona->primer_nombre;
 
-        $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'docente_id' => 'required',
-        ]);
+        $materia = new Materia();
+        $materia->nombre = $request->input('nombre');
+        $materia->descripcion = $request->input('descripcion');
+        $materia->docente_id = $request->input('docente_id');
 
-        $materias = Materia::create($request->all());
-
-        return redirect()->route('materias')
-            ->with('success', 'Materia creada correctamente');
-
+        if ($materia->save()) {
+            $alumnos = Materia::all();
+            $docentes = Persona::all();
+            $personas = Persona::all();
+            return view('colegio.alumnos.alumnos',  compact('alumnos', 'personas'));
+        }
     }
+
+
+
 
 
 }

@@ -10,4 +10,9 @@ class Materia extends Model
     use HasFactory;
 
     protected $fillable = ['nombre', 'descripcion', 'docente_id'];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
 }

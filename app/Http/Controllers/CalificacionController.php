@@ -21,10 +21,10 @@ class CalificacionController extends Controller
         $alumnos = Alumno::all();
         $docentes = Docente::all();
         $actividades = Actividad::all();
-    
-        return view('calificacion.create', compact('alumnos', 'docentes', 'actividades'));
+
+        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -35,7 +35,7 @@ class CalificacionController extends Controller
             'nota2' => 'required|numeric',
             'nota3' => 'required|numeric',
         ]);
-    
+
         $calificacion = new Calificacion();
         $calificacion->alumno_id = $request->alumno_id;
         $calificacion->docente_id = $request->docente_id;
@@ -46,7 +46,7 @@ class CalificacionController extends Controller
         // Calcula el promedio
         $calificacion->promedio = ($request->nota1 + $request->nota2 + $request->nota3) / 3;
         $calificacion->save();
-    
+
         return redirect()->route('colegio.calificaciones')->with('success', 'Calificación agregada exitosamente.');
     }
 }

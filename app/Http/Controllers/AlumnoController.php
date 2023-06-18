@@ -6,6 +6,9 @@ use App\Models\Alumno; //
 use App\Models\Grado;
 use App\Models\Persona;
 use App\Models\Jornada;
+use App\Models\Docente;
+use App\Models\Actividad;
+use App\Models\Calificacion;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -133,7 +136,7 @@ public function create()
     $alumnos = Alumno::all();
     $docentes = Docente::all();
     $actividades = Actividad::all();
-    return view('calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
+    return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
 }
 
 public function store(Request $request)
@@ -149,7 +152,7 @@ public function store(Request $request)
 
     Calificacion::create($request->all());
 
-    return redirect()->route('calificaciones.index')->with('success', 'Calificación guardada exitosamente.');
+    return redirect()->route('colegio.calificaciones.index')->with('success', 'Calificación guardada exitosamente.');
 }
 
 public function edit(Calificacion $calificacion)
@@ -157,7 +160,7 @@ public function edit(Calificacion $calificacion)
     $alumnos = Alumno::all();
     $docentes = Docente::all();
     $actividades = Actividad::all();
-    return view('calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
+    return view('colegio.calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
 }
 
 public function update(Request $request, Calificacion $calificacion)

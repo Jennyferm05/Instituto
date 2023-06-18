@@ -60,7 +60,7 @@
                                 <select class="form-control" name="docente_id" id="docente_id">
                                     <option value="">Seleccionar docente</option>
                                     @foreach ($docentes as $docente)
-                                            <option value="{{ $docente->id }}">{{ $docente->persona_id}}</option>
+                                            <option value="{{ $docente->id }}">{{ $docente->persona->primer_nombre}}</option>
 
                                     @endforeach
 

@@ -17,4 +17,8 @@ class Persona extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+    public function docente()
+    {
+        return $this->belongsTo(Docente::class, 'persona_id');
+    }
 }

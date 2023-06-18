@@ -51,7 +51,6 @@
                                         <th>Nombre</th>
                                         <th>Descripcion</th>
                                         <th>Docente Id</th>
-                                        <th>Persona Id</th>
 
                                         <th><a href="{{ route('nueva_materia') }}" class="btn btn-success btn-sm"><i
                                                     class="fas fa-plus"></i></a></th>
@@ -64,11 +63,10 @@
                                             <td>{{ $materia->id }}</td>
                                             <td>{{ $materia->nombre }}</td>
                                             <td>{{ $materia->descripcion }}</td>
-                                            <td>{{ $materia->docente_id }}</td>
                                             @foreach ($docentes as $docente)
                                                 @foreach ($personas as $persona)
                                                     @if ($materia->docente_id == $docente->id)
-                                                        <td>{{ $docente->persona_id }}</td>
+                                                        <td>{{ $docente->id}} {{ $docente->persona->primer_nombre}} {{ $docente->persona->primer_apellido}}</td>
                                                     @break
                                                 @endif
                                             @endforeach

@@ -15,4 +15,8 @@ class Alumno extends Model
         'persona_id' => 'unique:alumnos,persona_id',
     ];
 }
+public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
 }
