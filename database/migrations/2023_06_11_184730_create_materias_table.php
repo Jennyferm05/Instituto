@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->string('descripcion');
-            $table->foreignId('grado_id')->constrained('grados')->onDelete('cascade');
             $table->foreignId('docente_id')->constrained('docentes')->onDelete('cascade');
             $table->timestamps();
         });

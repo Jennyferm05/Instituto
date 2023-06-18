@@ -45,6 +45,7 @@ class AlumnoController extends Controller
 
     public function postalumnoadd(Request $request)
     {
+        $request->validate(Alumno::rules());
         $alumno = new Alumno();
         $alumno->persona_id = $request->input('persona_id');
         $alumno->grado_id = $request->input('grado_id');
