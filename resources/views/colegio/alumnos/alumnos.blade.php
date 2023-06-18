@@ -8,6 +8,9 @@
 @section('content')
     <main class="py-4"></main>
 
+    @if (session('mensaje'))
+        <div class="alert alert-success">{{ session('mensaje') }}</div>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -24,12 +27,13 @@
                                     <th>Grado Id</th>
                                     <th>Jornada</th>
                                     @can('getalumnoadd')
-                                        <th><a href="{{ route('colegio.alumno.add') }}" class="btn btn-success btn-sm"><i
-                                                    class="fas fa-plus"></i></a></th>
+                                        <th style="width: 200px;"><a href="{{ route('colegio.alumno.add') }}"
+                                                class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
                                     @endcan
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($alumnos as $alumno)
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
@@ -44,10 +48,17 @@
                                     <td>{{ $alumno->jornada_id }}</td>
 
                                     @can('getalumnoadd')
-                                        <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
-                                                class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                            <button class="btn btn-danger btn-sm" id="prueba"
-                                                value="{{ $alumno->id }}"><i class="fas fa-backspace"></i></button>
+                                        <form action="{{ route('colegio.alumno.delete', $alumno->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
+                                                    class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
+
+                                                <button class="btn btn-danger btn-sm" type="submit"
+                                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta persona?')"><i
+                                                        class="fas fa-backspace"></i></button>
+                                        </form>
                                         </td>
                                     @endcan
                                 </tr>

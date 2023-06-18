@@ -71,7 +71,7 @@
                         @endcan
                         @can('calificaciones')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('calificaciones') }}"><i
+                                <a class="nav-link" href="{{ route('mostrarcalificaciones') }}"><i
                                         class="fa-sharp fa-solid fa-arrow-down-1-9 fa-xs"
                                         style="color: #000000;">{{ __(' Calificaciones') }}</i></a>
                             </li>

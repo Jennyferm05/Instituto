@@ -51,7 +51,6 @@ Route::get('/Jornada', [App\Http\Controllers\ColegioController::class, 'mostrar_
 
 
 
-Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->middleware('can:calificaciones')->name('calificaciones');
 
 
 
