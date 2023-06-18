@@ -29,10 +29,8 @@ class DocenteController extends Controller
     {
         $personas = Persona::all();
         $docentes = Docente::all();
-        $grados = Grado::all();
-        
-
-        return view('colegio.docentes', compact('docentes', 'personas', ));
+        $jornadas = Jornada::all();
+         return view('colegio.docentes.docentes', compact('docentes', 'personas', 'jornadas'));
 
     }
 
@@ -40,22 +38,21 @@ class DocenteController extends Controller
     {
         $docentes = Docente::get();
         $personas = Persona::all();
-        $grados = Grado::all();
         $jornadas = Jornada::all();
-        $data = ['docentes'=>$docentes,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
-        return view('colegio.alumnos.odd',$data);
+        $data = ['docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
+        return view('colegio.docentes.odd',$data);
     }
 
     public function postdocenteodd(Request $request)
     {
         $docente = new Docente();
         $docente->persona_id = $request->input('persona_id');
-        $docente->grado_id = $request->input('grado_id');
         $docente->jornada_id = $request->input('jornada_id');
         if ($docente->save()) {
             $docentes = Docente::all();
             $personas = Persona::all();
-            return view('colegio.docentes',  compact('docentes', 'personas',));
+            $data = ['docentes'=>$docentes,'personas'=>$personas];
+            return redirect()->route('mostrardocentes', $data)->with('agregado', 'Docente Agregado Exitosamente');
         }
     }
 
@@ -65,7 +62,7 @@ class DocenteController extends Controller
     $persona_id = $personas->pluck('persona_id')->toArray();
     $docentes = Docente::whereIn('id', $persona_id)->get();
 
-    return view('colegio.docentes', [
+    return view('colegio.docentes.docentes', [
         'docentes' => $docentes,
         'personas' => $personas
     ]);
@@ -74,34 +71,40 @@ class DocenteController extends Controller
     {
         $docentes = Docente::get();
         $personas = Persona::all();
-        $grados = Grado::all();
         $jornadas = Jornada::all();
         $docente = Docente::findOrFail($id);
-        $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
+        $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
 
-        return view('colegio.alumnos.edot',$data);
+        return view('colegio.docentes.edot',$data);
     }
     public function postdocenteedot(Request $request, $id)
     {
         $docente = Docente::findOrFail($id);
-        $alumno->persona_id = $request->input('persona_id');
-        $docente->grado_id = $request->input('grado_id');
+        $docente->persona_id = $request->input('persona_id');
         $docente->jornada_id = $request->input('jornada_id');
         if($docente->save()){
             $docentes = Docente::get();
         $personas = Persona::all();
-        $grados = Grado::all();
         $jornadas = Jornada::all();
-        $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
-            return view('colegio.docentes',$data);
+        $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
+            return view('colegio.docentes.docentes',$data);
     }
     }
     public function getdocentedelete($id)
-    {
-        $docente = Docente::findOrFail($id);
-        $docente->delete();
+{
+    // Buscar la persona por ID
+    $docente = Docente::find($id);
+
+    // Verificar si la persona existe
+    if ($docente) {
+        $personas = Persona::all();
         $docentes = Docente::get();
-        $data = ['docente'=>$docente,'docentes'=>$docentes];
-            return view('colegio.docente',$data)->with('eliminar', 'ok');
+        $jornadas = Jornada::all();
+        $docente->delete();
+        $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
+        return redirect()->route('mostrardocentes', $data)->with('mensaje', 'Docente Eliminado Exitosamente');
+    } else {
+        return response()->json(['message' => 'No se encontró la persona'], 404);
     }
+}
 }

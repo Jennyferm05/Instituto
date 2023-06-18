@@ -95,13 +95,23 @@ class AlumnoController extends Controller
     }
     }
     public function getalumnodelete($id)
-    {
-        $alumno = Alumno::findOrFail($id);
-        $alumno->delete();
+{
+    // Buscar la persona por ID
+    $alumno = Alumno::find($id);
+
+    // Verificar si la persona existe
+    if ($alumno) {
+        $personas = Persona::all();
+        $grados = Grado::all();
         $alumnos = Alumno::get();
-        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos];
-            return view('colegio.alumnos.alumnos',$data)->with('eliminar', 'ok');
+        $jornadas = Jornada::all();
+        $alumno->delete();
+        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
+        return redirect()->route('mostraralumnos', $data)->with('mensaje', 'Alumno Eliminado Exitosamente');
+    } else {
+        return response()->json(['message' => 'No se encontró la persona'], 404);
     }
+}
 
 
 

@@ -21,7 +21,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><i class="fa-solid fa-graduation-cap  fa-sm"
                     style="color: #000000;">
@@ -70,11 +70,11 @@
                             </li>
                         @endcan
                         @can('calificaciones')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('mostrarcalificaciones') }}"><i
-                                    class="fa-sharp fa-solid fa-arrow-down-1-9 fa-xs"
-                                    style="color: #000000;">{{ __(' Calificaciones') }}</i></a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('calificaciones') }}"><i
+                                        class="fa-sharp fa-solid fa-arrow-down-1-9 fa-xs"
+                                        style="color: #000000;">{{ __(' Calificaciones') }}</i></a>
+                            </li>
                         @endcan
                         @can('mostrarhorarios')
                             <li class="nav-item">

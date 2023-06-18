@@ -30,7 +30,6 @@ class DocenteFactory extends Factory
 
         return [
             'persona_id' => Persona::inRandomOrder()->first()->id,
-            'grado_id' => Grado::inRandomOrder()->first()->id,
             'jornada_id' => Jornada::inRandomOrder()->first()->id,
         ];
     }

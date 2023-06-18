@@ -27,12 +27,13 @@ Route::get('/Grados', [App\Http\Controllers\GradoController::class, 'grados'])->
 
 //Rutas de alumnos: vista, agregar, editar y eliminar
 Route::get('/Alumnos', [App\Http\Controllers\AlumnoController::class, 'alumnos'])->middleware('can:alumnos')->name('alumnos');
+Route::get('/Alumnos', [App\Http\Controllers\ColegioController::class, 'mostrar_grado_alumnos'])->name('mostrar_grado_alumnos');
 Route::get('/Alumnos',  [App\Http\Controllers\AlumnoController::class, 'mostraralumnos'])->middleware('can:mostraralumnos')->name('mostraralumnos');
 Route::get('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'getalumnoadd'])->middleware('can:getalumnoadd')->name('colegio.alumno.add');
 Route::post('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'postalumnoadd'])->middleware('can:postalumnoadd')->name('colegio.alumno.add');
 Route::get('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnoedit'])->middleware('can:colegio.alumno.edit')->name('colegio.alumno.edit');
 Route::post('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class, 'postalumnoedit'])->middleware('can:postalumnoedit')->name('colegio.alumno.edit');
-Route::get('/Alumnos/delete/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnodelete'])->middleware('can:colegio.alumno.delete')->name('colegio.alumno.delete');
+Route::delete('/Alumnos/delete/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnodelete'])->middleware('can:colegio.alumno.delete')->name('colegio.alumno.delete');
 
 
 //Rutas de docenstes
@@ -81,12 +82,15 @@ Route::get('/Perfiles/Personas', [App\Http\Controllers\PersonaController::class,
 
 //Rutas de docente: vista, agregar, editar y eliminar
 Route::get('/Docentes', [App\Http\Controllers\DocenteController::class, 'docentes'])->middleware('can:docentes')->name('docentes');
+
+Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'mostrar_jornada_docentes'])->name('mostrar_jornada_docentes');
 Route::get('/Docentes',  [App\Http\Controllers\DocenteController::class, 'mostrardocentes'])->name('mostrardocentes');
-Route::get('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'getdocenteodd'])->name('colegio.alumno.odd');
-Route::post('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'postdocenteodd'])->name('colegio.alumno.odd');
-Route::get('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'getdocenteedot'])->name('colegio.alumno.edot');
-Route::post('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('colegio.alumno.edot');
-Route::get('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::class, 'getdocentedelete'])->name('colegio.alumno.delete');
+Route::get('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'getdocenteodd'])->name('getdocenteodd');
+Route::post('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'postdocenteodd'])->name('postdocenteodd');
+Route::get('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'getdocenteedot'])->name('getdocenteedot');
+Route::post('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('postdocenteedot');
+Route::delete('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::class, 'getdocentedelete'])->name('getdocentedelete');
+
 
 
 

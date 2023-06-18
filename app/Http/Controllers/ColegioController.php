@@ -8,6 +8,9 @@ use App\Models\Horario;
 use App\Models\Materia;
 use App\Models\Persona;
 use App\Models\Grado;
+use App\Models\Alumno;
+use App\Models\Jornada;
+
 
 class ColegioController extends Controller
 {
@@ -80,6 +83,28 @@ class ColegioController extends Controller
         return view('colegio.horarios.mostrar_horarios', [
             'horarios' => $horarios,
             'grados' => $grados
+        ]);
+    }
+    public function mostrar_grado_alumnos(Request $request)
+    {
+        $grados = Grado::all();
+        $grado_id = $grados->pluck('grado_id')->toArray();
+        $alumnos = Alumno::whereIn('id', $grado_id)->get();
+
+        return view('colegio.alumnos.alumnos', [
+            'docentes' => $alumnos,
+            'grados' => $grados
+        ]);
+    }
+    public function mostrar_jornada_docentes(Request $request)
+    {
+        $jornadas = Jornada::all();
+        $jornada_id = $jornadas->pluck('jornada_id')->toArray();
+        $docentes = Docente::whereIn('id', $jornada_id)->get();
+
+        return view('colegio.docentes.docentes', [
+            'docentes' => $docentes,
+            'jornadas' => $jornadas
         ]);
     }
 
