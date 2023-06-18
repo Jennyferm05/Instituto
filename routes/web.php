@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('can:home')->name('home');
 
-//Ruta de grupos: solo vista
+//Ruta de grados: solo vista
 Route::get('/Grados', [App\Http\Controllers\GradoController::class, 'grados'])->middleware('can:grados')->name('grados');
 
 
@@ -37,14 +37,30 @@ Route::get('/Alumnos/delete/{id}', [App\Http\Controllers\AlumnoController::class
 
 //Rutas de docenstes
 Route::get('/Docentes', [App\Http\Controllers\ColegioController::class, 'docentes'])->middleware('can:docentes')->name('docentes');
-Route::get('/Materias', [App\Http\Controllers\ColegioController::class, 'materias'])->middleware('can:materias')->name('materias');
+
+// RUtas de materias
+Route::get('/Materias', [App\Http\Controllers\MateriaController::class, 'index'])->name('materias');
+Route::get('/Materias/Nueva_Materia', [App\Http\Controllers\MateriaController::class, 'nueva_materia'])->name('nueva_materia');
+Route::post('/Materias/Nueva_Materia', [App\Http\Controllers\MateriaController::class, 'postmaterias'])->name('materia_agregada');
+Route::get('/Materias/Person_id', [App\Http\Controllers\ColegioController::class, 'mostrar_person_id'])->name('mostrar_person_id');
+
+Route::get('/Jornada', [App\Http\Controllers\ColegioController::class, 'mostrar_jornada'])->name('mostrar_jornada');
+
+
+
+
+
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->middleware('can:calificaciones')->name('calificaciones');
+
+
+
+
 
 
 //Ruta de horarios
 Route::get('/Horarios', [App\Http\Controllers\HorarioController::class, 'mostrarhorarios'])->middleware('can:mostrarhorarios')->name('mostrarhorarios');
 Route::get('/Horarios/filtro', [App\Http\Controllers\HorarioController::class,'filtro'])->middleware('can:filtro')->name('filtro');
-Route::get('/Horarios/materia', [App\Http\Controllers\MateriaController::class, 'mostrar_materia'])->middleware('can:mostrar_materia')->name('mostrar_materia');
+Route::get('/Horarios/materia', [App\Http\Controllers\ColegioController::class, 'mostrar_materia'])->middleware('can:mostrar_materia')->name('mostrar_materia');
 Route::get('/Horarios/grado', [App\Http\Controllers\ColegioController::class, 'mostrar_grado'])->middleware('can:mostrar_grado')->name('mostrar_grado');
 Route::get('/Horarios/Nuevos', [App\Http\Controllers\HorarioController::class, 'nuevo_horario'])->middleware('can:nuevo_horario')->name('nuevo_horario');
 Route::post('/Horarios/Nuevo', [App\Http\Controllers\HorarioController::class, 'store'])->middleware('can:store')->name('store');

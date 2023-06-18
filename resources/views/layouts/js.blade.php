@@ -29,20 +29,36 @@
 <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+    import Swal from 'sweetalert2';
+
+// ...
+
+// Agrega el código para mostrar la alerta cuando se hace clic en el botón
+document.getElementById('mi-boton').addEventListener('click', function() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    }
+  });
+
+  Toast.fire({
+    icon: 'success',
+    title: '¡Inicio de sesión exitoso!'
+  });
+});
+
 </script>
 
 
 
 <!--Sweetalert2 online para utilizar en la plantilla-->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- trabajar con sweetalert en linea -->
 
 <!--Sweetalert2 local para utilizar en la plantilla-->

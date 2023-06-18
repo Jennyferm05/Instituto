@@ -1,44 +1,52 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Calificacion;
+use App\Models\Alumno;
+use App\Models\Colegio;
+use App\Models\Docente;
+use App\Models\Actividad;
+
+
+
+
 use Illuminate\Http\Request;
 
 class CalificacionController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    public function mostrarcalificaciones()
     {
-        $this->middleware('auth');
+        $alumnos = Alumno::all();
+        $docentes = Docente::all();
+        $actividades = Actividad::all();
+    
+        return view('calificacion.create', compact('alumnos', 'docentes', 'actividades'));
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function calificaciones()
-    {
-        $calificaciones = Calificacion::all(); // Obtén todas las calificaciones desde la base de datos
-
-        return view('colegio.calificaciones', compact('calificaciones'));
-    }
-
+    
     public function store(Request $request)
     {
-        // Validar y guardar los datos enviados desde el formulario en la base de datos
         $request->validate([
-            'actividad_id' => 'required',
             'alumno_id' => 'required',
-            'nota' => 'required|numeric',
+            'docente_id' => 'required',
+            'actividad_id' => 'required',
+            'nota1' => 'required|numeric',
+            'nota2' => 'required|numeric',
+            'nota3' => 'required|numeric',
         ]);
-
-        Calificacion::create($request->all());
-
-        return redirect()->route('calificaciones.index')->with('success', 'La calificación se ha guardado correctamente.');
+    
+        $calificacion = new Calificacion();
+        $calificacion->alumno_id = $request->alumno_id;
+        $calificacion->docente_id = $request->docente_id;
+        $calificacion->actividad_id = $request->actividad_id;
+        $calificacion->nota1 = $request->nota1;
+        $calificacion->nota2 = $request->nota2;
+        $calificacion->nota3 = $request->nota3;
+        // Calcula el promedio
+        $calificacion->promedio = ($request->nota1 + $request->nota2 + $request->nota3) / 3;
+        $calificacion->save();
+    
+        return redirect()->route('colegio.calificaciones')->with('success', 'Calificación agregada exitosamente.');
     }
 }

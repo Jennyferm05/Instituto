@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\Models\Docente;
 use Illuminate\Http\Request;
 use App\Models\Horario;
 use App\Models\Materia;
+use App\Models\Persona;
 use App\Models\Grado;
 
 class ColegioController extends Controller
@@ -31,10 +31,35 @@ class ColegioController extends Controller
     {
         return view('colegio.docentes');
     }
-    public function materias()
+    public function mostrar_jornada()
     {
-        return view('colegio.materias');
+        return view('colegio.registros.mostrar_jornada');
     }
+
+
+    public function mostrar_person_id(Request $request, $id)
+    {
+        $docentes = Docente::all();
+        $docente_id = $docentes->pluck('docente_id')->toArray();
+        $materias = Horario::whereIn('id', $docente_id)->get();
+
+        return view('colegio.registros.index', [
+            'docentes' => $docentes,
+            'materias' => $materias,
+        ]);
+    }
+    public function mostrar_materia(Request $request)
+    {
+        $materias = Materia::all();
+        $materia_id = $materias->pluck('materia_id')->toArray();
+        $horarios = Horario::whereIn('id', $materia_id)->get();
+
+        return view('colegio.horarios.mostrar_horarios', [
+            'horarios' => $horarios,
+            'materias' => $materias
+        ]);
+    }
+
     public function mostrar_grado(Request $request)
     {
         $grados = Grado::all();

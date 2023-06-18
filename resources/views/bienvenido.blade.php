@@ -5,11 +5,12 @@
 @section('css')
     <style>
         .jumbotron {
-            background-image: url('{{ asset('img/bienvenido.png') }}');
-            background-size: cover;
+            background-image: url('https://i.ytimg.com/vi/mVNMFm3iC-A/maxresdefault.jpg');
+            background-size: 1518px 700px;
             background-position: center;
-            color: #fff;
-            height: 600px;
+            color: #040202;
+            height: 700px;
+            width: 1518px;
             margin-bottom: 0%;
         }
     </style>
@@ -17,9 +18,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-
-            <h1 class="display-4 dt-center">WELCOME</h1>
-            <p>INSTITUTO</p>
         </div>
     </div>
     <footer class="footer">

@@ -9,11 +9,12 @@ class Persona extends Model
 {
     use HasFactory;
 
-    public function eps(){
+    public function eps()
+    {
         return $this->belongsTo(EPS::class, 'eps_id');
     }
     public function roles()
-{
-    return $this->belongsToMany(Role::class);
-}
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
