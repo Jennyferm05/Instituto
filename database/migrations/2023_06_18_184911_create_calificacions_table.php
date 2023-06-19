@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('nota1');
             $table->float('nota2');
             $table->float('nota3');
+            $table->float('promedio')->nullable();
             $table->timestamps();
         });
     }

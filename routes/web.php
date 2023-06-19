@@ -28,6 +28,7 @@ Route::get('/Grados', [App\Http\Controllers\GradoController::class, 'grados'])->
 //Rutas de alumnos: vista, agregar, editar y eliminar
 Route::get('/Alumnos', [App\Http\Controllers\AlumnoController::class, 'alumnos'])->middleware('can:alumnos')->name('alumnos');
 Route::get('/Alumnos', [App\Http\Controllers\ColegioController::class, 'mostrar_grado_alumnos'])->name('mostrar_grado_alumnos');
+Route::get('/Alumnos', [App\Http\Controllers\ColegioController::class, 'mostrar_jornada_alumnos'])->name('mostrar_jornada_alumnos');
 Route::get('/Alumnos',  [App\Http\Controllers\AlumnoController::class, 'mostraralumnos'])->middleware('can:mostraralumnos')->name('mostraralumnos');
 Route::get('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'getalumnoadd'])->middleware('can:getalumnoadd')->name('colegio.alumno.add');
 Route::post('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'postalumnoadd'])->middleware('can:postalumnoadd')->name('colegio.alumno.add');
@@ -79,7 +80,7 @@ Route::get('/Docentes',  [App\Http\Controllers\DocenteController::class, 'mostra
 Route::get('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'getdocenteodd'])->name('getdocenteodd');
 Route::post('/Docentes/Nuevo', [App\Http\Controllers\DocenteController::class, 'postdocenteodd'])->name('postdocenteodd');
 Route::get('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'getdocenteedot'])->name('getdocenteedot');
-Route::post('/Docentes/Edot/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('postdocenteedot');
+Route::put('/Docentes/{id}', [App\Http\Controllers\DocenteController::class, 'postdocenteedot'])->name('postdocenteedot');
 Route::delete('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::class, 'getdocentedelete'])->name('getdocentedelete');
 
 
@@ -89,7 +90,7 @@ Route::delete('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::
 
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones');
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'mostrarcalificaciones'])->name('mostrarcalificaciones');
-Route::get('/Calificaciones/create', [App\Http\Controllers\CalificacionController::class, 'calificaciones'])->name('calificaciones.create');
+Route::get('/Calificaciones/create', [App\Http\Controllers\CalificacionController::class, 'create'])->name('calificaciones.create');
 Route::post('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'store'])->name('calificaciones.store');
 Route::get('/Calificaciones/{calificacion}/edit', [App\Http\Controllers\CalificacionController::class, 'edit'])->name('calificaciones.edit');
 Route::put('/Calificaciones/{calificacion}', [App\Http\Controllers\CalificacionController::class, 'update'])->name('calificaciones.update');

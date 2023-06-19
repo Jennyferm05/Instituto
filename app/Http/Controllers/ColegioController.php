@@ -96,6 +96,17 @@ class ColegioController extends Controller
             'grados' => $grados
         ]);
     }
+    public function mostrar_jornada_alumnos(Request $request)
+    {
+        $jornadas = Jornada::all();
+        $jornada_id = $jornadas->pluck('jornada_id')->toArray();
+        $alumnos = Alumno::whereIn('id', $jornada_id)->get();
+
+        return view('colegio.alumnos.alumnos', [
+            'docentes' => $alumnos,
+            'jornadas' => $jornadas
+        ]);
+    }
     public function mostrar_jornada_docentes(Request $request)
     {
         $jornadas = Jornada::all();

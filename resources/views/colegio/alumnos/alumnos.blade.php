@@ -23,7 +23,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Persona Id</th>
-                                    <th>Nombres</th>
                                     <th>Grado Id</th>
                                     <th>Jornada</th>
                                     @can('getalumnoadd')
@@ -37,38 +36,47 @@
                                 @foreach ($alumnos as $alumno)
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
-                                        <td>{{ $alumno->persona_id }}</td>
                                         @foreach ($personas as $persona)
                                             @if ($alumno->persona_id == $persona->id)
-                                                <td>{{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                                <td>{{ $alumno->persona_id }} {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
                                             @break
                                         @endif
                                     @endforeach
-                                    <td>{{ $alumno->grado_id }}</td>
-                                    <td>{{ $alumno->jornada_id }}</td>
-
-                                    @can('getalumnoadd')
-                                        <form action="{{ route('colegio.alumno.delete', $alumno->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
-                                                    class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-
-
-                                                <button class="btn btn-danger btn-sm" type="submit"
-                                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta persona?')"><i
-                                                        class="fas fa-backspace"></i></button>
-                                        </form>
-                                        </td>
-                                    @endcan
-                                </tr>
+                                    @foreach ($grados as $grado)
+                                        @if ($alumno->grado_id == $grado->id)
+                                            <td>{{ $alumno->grado_id }} {{ $grado->nombre }}</td>
+                                        @break
+                                    @endif
+                                @endforeach
+                                @foreach ($jornadas as $jornada)
+                                    @if ($alumno->jornada_id == $jornada->id)
+                                        <td>{{ $alumno->jornada_id }} {{ $jornada->nombre }}</td>
+                                    @break
+                                @endif
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+                            @can('getalumnoadd')
+                                <form action="{{ route('colegio.alumno.delete', $alumno->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
+                                            class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
+
+                                        <button class="btn btn-danger btn-sm" type="submit"
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta persona?')"><i
+                                                class="fas fa-backspace"></i></button>
+                                </form>
+                                </td>
+                            @endcan
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 @section('scripts')

@@ -27,7 +27,6 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Persona Id</th>
-                                        <th>Nombres</th>
                                         <th>Jornada</th>
                                         <th><a href="{{ route('getdocenteodd') }}" class="btn btn-success btn-sm"><i
                                                     class="fas fa-plus"></i></a></th>
@@ -37,11 +36,10 @@
                                     @foreach ($docentes as $docente)
                                         <tr>
                                             <td>{{ $docente->id }}</td>
-                                            <td>{{ $docente->persona_id }}</td>
 
                                             @foreach ($personas as $persona)
                                                 @if ($docente->persona_id == $persona->id)
-                                                    <td>{{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                                    <td>{{ $docente->persona_id }} {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
                                                 @break
                                             @endif
                                         @endforeach

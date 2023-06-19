@@ -14,28 +14,28 @@
 
                             <form action="{{ route('postdocenteedot', $docente->id) }}" method="POST">
                                 @csrf
-
-                                <label for="persona_id">Selecciona Persona Id:</label>
+                                @method('PUT')
+                                <label for="persona_id">Persona:</label>
                                 <select class="form-control" name="persona_id" id="persona_id">
-                                    <option value="">Seleccione Persona Id:</option>
                                     @foreach ($personas as $persona)
-                                        <option value="{{ $persona->id }}">{{ $persona->primer_nombre }}
-                                            {{ $persona->primer_apellido }}</option>
+                                        <option value="{{ $persona->id }}"
+                                            @if ($persona->id === $docente->persona_id) selected @endif>
+                                            {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</option>
                                     @endforeach
-                                </select><br>
-                                <label for="jornada_id">Selecciona Jornada Id:</label>
+                                </select>
+                                <label for="jornada_id">Jornada:</label>
                                 <select class="form-control" name="jornada_id" id="jornada_id">
-                                    <option value="">Seleccione Jornada Id:</option>
                                     @foreach ($jornadas as $jornada)
-                                        <option value="{{ $jornada->id }}">{{ $jornada->nombre }}
-                                        </option>
+                                        <option value="{{ $jornada->id }}"
+                                            @if ($jornada->id === $docente->jornada_id) selected @endif>
+                                            {{ $jornada->nombre }}</option>
                                     @endforeach
                                 </select><br>
+
 
                                 <button class="btn btn-primary" name="agregar" type="submit">Modificar</button>
                                 <a href="{{ route('mostrardocentes') }}" class="btn btn-danger btn-xl">Cancelar</a>
                             </form>
-
                         </div>
                     </div>
                 </div>

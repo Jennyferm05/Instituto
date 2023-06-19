@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Calificacion;
 use App\Models\Alumno;
-use App\Models\Colegio;
+use App\Models\Persona;
 use App\Models\Docente;
 use App\Models\Actividad;
 
@@ -22,31 +22,43 @@ class CalificacionController extends Controller
         $docentes = Docente::all();
         $actividades = Actividad::all();
 
-        return view('colegio.calificacion.create', compact('alumnos', 'docentes', 'actividades'));
+        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
+    }
+
+    public function create()
+    {
+        $alumnos = Alumno::all();
+        $docentes = Docente::all();
+        $actividades = Actividad::all();
+        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'alumno_id' => 'required',
-            'docente_id' => 'required',
-            'actividad_id' => 'required',
-            'nota1' => 'required|numeric',
-            'nota2' => 'required|numeric',
-            'nota3' => 'required|numeric',
-        ]);
+        $alumno_id = $request->input('alumno_id');
+        $alumno = Alumno::with('persona')->find($alumno_id);
+        $nombre_alumno = $alumno->persona->primer_nombre;
+
+        $docente_id = $request->input('docente_id');
+        $docente = Docente::with('persona')->find($docente_id);
+        $nombre_docente = $docente->persona->primer_nombre;
 
         $calificacion = new Calificacion();
-        $calificacion->alumno_id = $request->alumno_id;
-        $calificacion->docente_id = $request->docente_id;
-        $calificacion->actividad_id = $request->actividad_id;
+        $calificacion->alumno_id = $request->input('alumno_id');
+        $calificacion->docente_id = $request->input('docente_id');
+        $calificacion->actividad_id = $request->input('actividad_id');
         $calificacion->nota1 = $request->nota1;
         $calificacion->nota2 = $request->nota2;
         $calificacion->nota3 = $request->nota3;
-        // Calcula el promedio
         $calificacion->promedio = ($request->nota1 + $request->nota2 + $request->nota3) / 3;
-        $calificacion->save();
 
-        return redirect()->route('colegio.calificaciones')->with('success', 'Calificación agregada exitosamente.');
+        if ($calificacion->save()) {
+            $alumnos = Alumno::all();
+            $docentes = Docente::all();
+            $personas = Persona::all();
+
+            $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'docentes' => $docentes, 'nombre_alumno' => $nombre_alumno, 'nombre_docente' => $nombre_docente];
+            return redirect()->route('colegio.calificaciones')->with('success', 'Calificación agregada exitosamente.');
+        }
     }
 }

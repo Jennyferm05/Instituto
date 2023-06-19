@@ -32,7 +32,9 @@ class AlumnoController extends Controller
     {
         $personas = Persona::all();
         $alumnos = Alumno::all();
-        return view('colegio.alumnos.alumnos', compact('alumnos', 'personas'));
+        $grados = Grado::all();
+        $jornadas = Jornada::all();
+        return view('colegio.alumnos.alumnos', compact('alumnos', 'personas', 'grados', 'jornadas'));
 
     }
 
@@ -124,13 +126,7 @@ class AlumnoController extends Controller
 
 
 
-    public function create()
-    {
-        $alumnos = Alumno::all();
-        $docentes = Docente::all();
-        $actividades = Actividad::all();
-        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
-    }
+
 
     public function store(Request $request)
     {

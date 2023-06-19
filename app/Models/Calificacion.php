@@ -9,7 +9,12 @@ class Calificacion extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'estudiante',
-        'asignatura',
-        'calificacion'];
+        'alumno_id',
+        'materia_id',
+        'nota'];
+
+        public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
 }
