@@ -43,7 +43,7 @@ class AlumnoController extends Controller
             ->get();
 
         $nombresAlumnos = $result->pluck('primer_nombre')->toArray();
-        $promedios = Calificacion::orderBy('promedio', 'desc')->pluck('promedio')->toArray();
+        $promedios = Calificacion::orderBy('promedio', 'asc')->pluck('promedio')->toArray();
 
         return view('colegio.alumnos.alumnos', compact('nombresAlumnos', 'promedios', 'alumnos', 'personas', 'jornadas', 'grados'));
 
