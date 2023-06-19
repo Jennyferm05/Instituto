@@ -10,6 +10,7 @@ use App\Models\Docente;
 use App\Models\Actividad;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller
 {
@@ -34,7 +35,17 @@ class AlumnoController extends Controller
         $alumnos = Alumno::all();
         $grados = Grado::all();
         $jornadas = Jornada::all();
-        return view('colegio.alumnos.alumnos', compact('alumnos', 'personas', 'grados', 'jornadas'));
+        $actividades = Actividad::all();
+        $result = DB::table('calificacions')
+            ->join('alumnos', 'calificacions.alumno_id', '=', 'alumnos.id')
+            ->join('personas', 'alumnos.persona_id', '=', 'personas.id')
+            ->select('personas.primer_nombre')
+            ->get();
+
+        $nombresAlumnos = $result->pluck('primer_nombre')->toArray();
+        $promedios = Calificacion::orderBy('promedio', 'desc')->pluck('promedio')->toArray();
+
+        return view('colegio.alumnos.alumnos', compact('nombresAlumnos', 'promedios', 'alumnos', 'personas', 'jornadas', 'grados'));
 
     }
 
@@ -56,9 +67,13 @@ class AlumnoController extends Controller
         $alumno->grado_id = $request->input('grado_id');
         $alumno->jornada_id = $request->input('jornada_id');
         if ($alumno->save()) {
-            $alumnos = Alumno::all();
             $personas = Persona::all();
-            return view('colegio.alumnos.alumnos', compact('alumnos', 'personas'));
+            $grados = Grado::all();
+            $alumnos = Alumno::get();
+            $jornadas = Jornada::all();
+            $alumno->delete();
+            $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'grados' => $grados, 'jornadas' => $jornadas];
+            return redirect()->route('mostraralumnos', $data)->with('agregado', 'Alumno Agregado Exitosamente');
         }
     }
 

@@ -1,58 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Crear Calificación</h1>
+    <main class="py-4"></main>
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Calificaciones</div>
 
-    <form action="{{ route('colegio.calificaciones') }}" method="POST">
-        @csrf
+                <div class="card-body">
 
-        <div class="form-group">
-            <label for="alumno_id">Alumno</label>
-            <select name="alumno_id" id="alumno_id" class="form-control">
-                <option value="" disabled selected>Selecciona un Alumno</option>
-                @foreach ($alumnos as $alumno)
-                    <option value="{{ $alumno->id }}">{{ $alumno->nombre }}</option>
-                @endforeach
-            </select>
+                    <table id="datatable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Alumno Id</th>
+                                <th>Docente Id</th>
+                                <th>Actividad Id</th>
+                                <th>Promedio</th>
+                                <th style="width: 200px;"><a href="{{ route('calificaciones.create') }}"
+                                    class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($calificaciones as $calificacion)
+                                <tr>
+                                    <td>{{ $calificacion->id }}</td>
+                                    <td>{{ $calificacion->alumno_id }}</td>
+                                    <td>{{ $calificacion->docente_id }}</td>
+                                    <td>{{ $calificacion->actividad_id }}</td>
+                                    <td>{{ $calificacion->promedio }}</td>
+                                    <td>botones-editar-eliminar</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="docente_id">Docente</label>
-            <select name="docente_id" id="docente_id" class="form-control">
-                <option value="" disabled selected>Selecciona un Docente</option>
-                @foreach ($docentes as $docente)
-                    <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
-                @endforeach
-            </select>
-        </div>
+@section('scripts')
 
-        <div class="form-group">
-            <label for="actividad_id">Actividad</label>
-            <select name="actividad_id" id="actividad_id" class="form-control">
-                <option value="" disabled selected>Selecciona una Actividad</option>
-                @foreach ($actividades as $actividad)
-                    <option value="{{ $actividad->id }}">{{ $actividad->nombre }}</option>
-                @endforeach
-            </select>
-        </div>
 
-        <div class="form-group">
-            <label for="nota1">Nota 1</label>
-            <input type="number" name="nota1" id="nota1" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="nota2">Nota 2</label>
-            <input type="number" name="nota2" id="nota2" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="nota3">Nota 3</label>
-            <input type="number" name="nota3" id="nota3" class="form-control">
-        </div>
-
-        <!-- Agrega aquí más campos y elementos del formulario según tus necesidades -->
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+@show
 @endsection

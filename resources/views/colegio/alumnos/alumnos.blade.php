@@ -9,8 +9,37 @@
     <main class="py-4"></main>
 
     @if (session('mensaje'))
-        <div class="alert alert-success">{{ session('mensaje') }}</div>
+        <div class="alert alert-danger">{{ session('mensaje') }}</div>
     @endif
+
+    @if (session('modificado'))
+        <div class="alert alert-warning">{{ session('modificado') }}</div>
+    @endif
+
+    @if (session('agregado'))
+    <div class="alert alert-success">{{ session('agregado') }}</div>
+@endif
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h6 class="card-title">Promedios</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="areaChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section><br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -78,8 +107,58 @@
 </div>
 </div>
 </div>
+<br>
+
 
 @section('scripts')
+
+<script>
+    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+
+    var areaChartData = {
+        labels: @json($nombresAlumnos),
+
+        datasets: [{
+            label: 'Promedio de alumnos',
+            backgroundColor: 'rgba(52, 152, 219 )',
+            borderColor: 'rgba(84, 153, 199)',
+            pointRadius: true,
+            pointColor: '#3b8bba',
+            pointStrokeColor: 'rgba(60,141,188,1)',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data: @json($promedios)
+        }, ]
+    }
+
+    var areaChartOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: true,
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: true,
+                }
+            }]
+        }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    new Chart(areaChartCanvas, {
+        type: 'line',
+        data: areaChartData,
+        options: areaChartOptions
+    })
+</script>
+
 @show
 
 @section('dataTables')

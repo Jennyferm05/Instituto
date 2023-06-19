@@ -83,3 +83,10 @@ document.getElementById('mi-boton').addEventListener('click', function() {
 
     });
 </script>
+
+
+
+
+<script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
+
+

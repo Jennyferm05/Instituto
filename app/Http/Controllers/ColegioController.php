@@ -6,10 +6,10 @@ use App\Models\Docente;
 use Illuminate\Http\Request;
 use App\Models\Horario;
 use App\Models\Materia;
-use App\Models\Persona;
 use App\Models\Grado;
 use App\Models\Alumno;
 use App\Models\Jornada;
+
 
 
 class ColegioController extends Controller
@@ -118,5 +118,6 @@ class ColegioController extends Controller
             'jornadas' => $jornadas
         ]);
     }
+
 
 }

@@ -25,4 +25,8 @@ class Persona extends Model
     {
         return $this->belongsTo(Alumno::class, 'persona_id');
     }
+    public function calificacion()
+    {
+        return $this->belongsTo(Calificacion::class, 'persona_id');
+    }
 }

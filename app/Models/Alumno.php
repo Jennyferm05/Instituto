@@ -27,4 +27,8 @@ class Alumno extends Model
     {
         return $this->belongsTo(Jornada::class, 'jornada_id');
     }
+    public function calificacion()
+    {
+        return $this->belongsTo(Calificacion::class, 'persona_id');
+    }
 }

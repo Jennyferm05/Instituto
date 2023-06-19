@@ -61,6 +61,7 @@
                                 </div><br>
 
                                 <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="{{ route('mostrarcalificaciones') }}" class="btn btn-danger btn-xl">Cancelar</a>
 
                             </form>
                         </div>
