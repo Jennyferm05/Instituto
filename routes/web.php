@@ -32,7 +32,7 @@ Route::get('/Alumnos',  [App\Http\Controllers\AlumnoController::class, 'mostrara
 Route::get('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'getalumnoadd'])->middleware('can:getalumnoadd')->name('colegio.alumno.add');
 Route::post('/Alumnos/Nuevo', [App\Http\Controllers\AlumnoController::class, 'postalumnoadd'])->middleware('can:postalumnoadd')->name('colegio.alumno.add');
 Route::get('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnoedit'])->middleware('can:colegio.alumno.edit')->name('colegio.alumno.edit');
-Route::post('/Alumnos/Edit/{id}', [App\Http\Controllers\AlumnoController::class, 'postalumnoedit'])->middleware('can:postalumnoedit')->name('colegio.alumno.edit');
+Route::put('/Alumnos/{id}', [App\Http\Controllers\AlumnoController::class, 'postalumnoedit'])->middleware('can:postalumnoedit')->name('postalumnoedit');
 Route::delete('/Alumnos/delete/{id}', [App\Http\Controllers\AlumnoController::class, 'getalumnodelete'])->middleware('can:colegio.alumno.delete')->name('colegio.alumno.delete');
 
 
@@ -46,14 +46,6 @@ Route::post('/Materias/Nueva_Materia', [App\Http\Controllers\MateriaController::
 Route::get('/Materias/Person_id', [App\Http\Controllers\ColegioController::class, 'mostrar_person_id'])->name('mostrar_person_id');
 
 Route::get('/Jornada', [App\Http\Controllers\ColegioController::class, 'mostrar_jornada'])->name('mostrar_jornada');
-
-
-
-
-
-
-
-
 
 
 

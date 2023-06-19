@@ -22,7 +22,7 @@ class CalificacionController extends Controller
         $docentes = Docente::all();
         $actividades = Actividad::all();
 
-        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
+        return view('colegio.calificacion.create', compact('alumnos', 'docentes', 'actividades'));
     }
 
     public function store(Request $request)

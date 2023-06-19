@@ -42,8 +42,8 @@ class AlumnoController extends Controller
         $personas = Persona::all();
         $grados = Grado::all();
         $jornadas = Jornada::all();
-        $data = ['alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
-        return view('colegio.alumnos.add',$data);
+        $data = ['alumnos' => $alumnos, 'personas' => $personas, 'grados' => $grados, 'jornadas' => $jornadas];
+        return view('colegio.alumnos.add', $data);
     }
 
     public function postalumnoadd(Request $request)
@@ -56,74 +56,66 @@ class AlumnoController extends Controller
         if ($alumno->save()) {
             $alumnos = Alumno::all();
             $personas = Persona::all();
-            return view('colegio.alumnos.alumnos',  compact('alumnos', 'personas'));
+            return view('colegio.alumnos.alumnos', compact('alumnos', 'personas'));
         }
     }
 
     public function alumnos(Request $request)
-{
-    $personas = Persona::all();
-    $persona_id = $personas->pluck('persona_id')->toArray();
-    $alumnos = Alumno::whereIn('id', $persona_id)->get();
+    {
+        $personas = Persona::all();
+        $persona_id = $personas->pluck('persona_id')->toArray();
+        $alumnos = Alumno::whereIn('id', $persona_id)->get();
 
-    return view('colegio.alumnos.alumnos', [
-        'alumnos' => $alumnos,
-        'personas' => $personas
-    ]);
-}
+        return view('colegio.alumnos.alumnos', [
+            'alumnos' => $alumnos,
+            'personas' => $personas
+        ]);
+    }
     public function getalumnoedit($id)
     {
-        $alumnos = Alumno::get();
+
+
+        $alumno = Alumno::findOrFail($id);
         $personas = Persona::all();
         $grados = Grado::all();
         $jornadas = Jornada::all();
-        $alumno = Alumno::findOrFail($id);
-        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
 
-        return view('colegio.alumnos.edit',$data);
+        return view('colegio.alumnos.edit', compact('alumno', 'personas', 'grados', 'jornadas'));
+
+
     }
+
     public function postalumnoedit(Request $request, $id)
     {
         $alumno = Alumno::findOrFail($id);
+
         $alumno->persona_id = $request->input('persona_id');
         $alumno->grado_id = $request->input('grado_id');
         $alumno->jornada_id = $request->input('jornada_id');
-        if($alumno->save()){
-            $alumnos = Alumno::get();
-        $personas = Persona::all();
-        $grados = Grado::all();
-        $jornadas = Jornada::all();
-        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
-            return view('colegio.alumnos.alumnos',$data);
-    }
+
+
+        $alumno->save();
+
+        return redirect()->route('mostraralumnos')->with('modificado', 'Alumno actualizado correctamente');
     }
     public function getalumnodelete($id)
-{
-    // Buscar la persona por ID
-    $alumno = Alumno::find($id);
+    {
+        // Buscar la persona por ID
+        $alumno = Alumno::find($id);
 
-    // Verificar si la persona existe
-    if ($alumno) {
-        $personas = Persona::all();
-        $grados = Grado::all();
-        $alumnos = Alumno::get();
-        $jornadas = Jornada::all();
-        $alumno->delete();
-        $data = ['alumno'=>$alumno,'alumnos'=>$alumnos,'personas'=>$personas,'grados'=>$grados,'jornadas'=>$jornadas];
-        return redirect()->route('mostraralumnos', $data)->with('mensaje', 'Alumno Eliminado Exitosamente');
-    } else {
-        return response()->json(['message' => 'No se encontró la persona'], 404);
+        // Verificar si la persona existe
+        if ($alumno) {
+            $personas = Persona::all();
+            $grados = Grado::all();
+            $alumnos = Alumno::get();
+            $jornadas = Jornada::all();
+            $alumno->delete();
+            $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'grados' => $grados, 'jornadas' => $jornadas];
+            return redirect()->route('mostraralumnos', $data)->with('mensaje', 'Alumno Eliminado Exitosamente');
+        } else {
+            return response()->json(['message' => 'No se encontró la persona'], 404);
+        }
     }
-}
-
-
-
-// AlumnoController.php
-public function index()
-{
-    $alumnos = Alumno::all();
-    return view('alumnos.index', compact('alumnos'));
-}
 
 
 
@@ -131,53 +123,54 @@ public function index()
 
 
 
-public function create()
-{
-    $alumnos = Alumno::all();
-    $docentes = Docente::all();
-    $actividades = Actividad::all();
-    return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
-}
 
-public function store(Request $request)
-{
-    $request->validate([
-        'alumno_id' => 'required',
-        'docente_id' => 'required',
-        'actividad_id' => 'required',
-        'nota1' => 'required|numeric',
-        'nota2' => 'required|numeric',
-        'nota3' => 'required|numeric',
-    ]);
+    public function create()
+    {
+        $alumnos = Alumno::all();
+        $docentes = Docente::all();
+        $actividades = Actividad::all();
+        return view('colegio.calificaciones.create', compact('alumnos', 'docentes', 'actividades'));
+    }
 
-    Calificacion::create($request->all());
+    public function store(Request $request)
+    {
+        $request->validate([
+            'alumno_id' => 'required',
+            'docente_id' => 'required',
+            'actividad_id' => 'required',
+            'nota1' => 'required|numeric',
+            'nota2' => 'required|numeric',
+            'nota3' => 'required|numeric',
+        ]);
 
-    return redirect()->route('colegio.calificaciones.index')->with('success', 'Calificación guardada exitosamente.');
-}
+        Calificacion::create($request->all());
 
-public function edit(Calificacion $calificacion)
-{
-    $alumnos = Alumno::all();
-    $docentes = Docente::all();
-    $actividades = Actividad::all();
-    return view('colegio.calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
-}
+        return redirect()->route('colegio.calificaciones.index')->with('success', 'Calificación guardada exitosamente.');
+    }
 
-public function update(Request $request, Calificacion $calificacion)
-{
-    $request->validate([
-        'alumno_id' => 'required',
-        'docente_id' => 'required',
-        'actividad_id' => 'required',
-        'nota1' => 'required|numeric',
-        'nota2' => 'required|numeric',
-        'nota3' => 'required|numeric',
-    ]);
+    public function edit(Calificacion $calificacion)
+    {
+        $alumnos = Alumno::all();
+        $docentes = Docente::all();
+        $actividades = Actividad::all();
+        return view('colegio.calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
+    }
 
-    $calificacion->update($request->all());
+    public function update(Request $request, Calificacion $calificacion)
+    {
+        $request->validate([
+            'alumno_id' => 'required',
+            'docente_id' => 'required',
+            'actividad_id' => 'required',
+            'nota1' => 'required|numeric',
+            'nota2' => 'required|numeric',
+            'nota3' => 'required|numeric',
+        ]);
 
-    return redirect()->route('calificaciones.index')->with('success', 'Calificación actualizada exitosamente.');
-}
+        $calificacion->update($request->all());
+
+        return redirect()->route('calificaciones.index')->with('success', 'Calificación actualizada exitosamente.');
+    }
 
 
 
