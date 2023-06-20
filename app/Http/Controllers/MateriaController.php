@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Materia;
 use App\Models\Grado;
 use App\Models\Persona;
+use App\Models\Jornada;
 use Illuminate\Validation\Rule;
 
 class MateriaController extends Controller
@@ -31,7 +32,8 @@ class MateriaController extends Controller
         $materias = Materia::all();
         $docentes = Docente::all();
         $personas = Persona::all();
-        return view('colegio.registros.index', compact('docentes', 'materias', 'personas'));
+        $grados = Grado::all();
+        return view('colegio.registros.index', compact('docentes', 'materias', 'personas', 'grados'));
     }
     public function nueva_materia()
     {
@@ -51,9 +53,10 @@ class MateriaController extends Controller
 
         if ($materia->save()) {
             $alumnos = Materia::all();
-            $docentes = Persona::all();
+            $docentes = Docente::all();
             $personas = Persona::all();
-            return view('colegio.alumnos.alumnos',  compact('alumnos', 'personas'));
+            $data = ['alumnos' => $alumnos, 'personas' => $personas, 'docentes' => $docentes];
+            return redirect()->route('materias', $data)->with('success', 'Calificación agregada exitosamente.');
         }
     }
 

@@ -29,7 +29,7 @@ class ColegioController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
 
 
     public function mostrar_person_id(Request $request, $id)
@@ -66,7 +66,7 @@ class ColegioController extends Controller
             'grados' => $grados
         ]);
     }
-    public function mostrar_dia(Request $request)
+    public function mostrar_nombre_calificaciones(Request $request)
     {
         $grados = Grado::all();
         $grado_id = $grados->pluck('grado_id')->toArray();
