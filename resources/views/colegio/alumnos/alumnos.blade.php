@@ -56,7 +56,7 @@
                                     <th>Jornada</th>
                                     @can('getalumnoadd')
                                         <th style="width: 200px;"><a href="{{ route('colegio.alumno.add') }}"
-                                                class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                                                class="btn btn-success btn-sm"><i class="fa-solid fa-circle-plus" style="color: #050505;"></i></a></th>
                                     @endcan
                                 </tr>
                             </thead>
@@ -93,10 +93,10 @@
 
 
                                         <button class="btn btn-danger btn-sm" type="submit"
-                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta persona?')"><i
-                                                class="fas fa-backspace"></i></button>
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta alumno?')"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
                                 </form>
                                 </td>
+
                             @endcan
                         </tr>
                     @endforeach
@@ -135,7 +135,7 @@
         maintainAspectRatio: false,
         responsive: true,
         legend: {
-            display: false
+            display: true
         },
         scales: {
             xAxes: [{

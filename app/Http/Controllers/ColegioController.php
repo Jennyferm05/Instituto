@@ -29,15 +29,7 @@ class ColegioController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
-    public function docentes()
-    {
-        return view('colegio.docentes');
-    }
-    public function mostrar_jornada()
-    {
-        return view('colegio.registros.mostrar_jornada');
-    }
+    
 
 
     public function mostrar_person_id(Request $request, $id)

@@ -23,6 +23,16 @@
 @endsection
 @section('content')
     <main class="py-4"></main>
+    @if (session('mensaje'))
+    <div class="alert alert-danger">{{ session('mensaje') }}</div>
+@endif
+@if (session('modificado'))
+        <div class="alert alert-warning">{{ session('modificado') }}</div>
+    @endif
+
+    @if (session('agregado'))
+    <div class="alert alert-success">{{ session('agregado') }}</div>
+@endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -88,4 +98,5 @@
         </div>
     </div>
 @endsection
+
 

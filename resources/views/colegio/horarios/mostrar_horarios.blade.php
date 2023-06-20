@@ -61,7 +61,17 @@
                                 @endif
                             @endforeach
                             @can('nuevo_horario')
-                                <td></td>
+                            <form action="{{ route('colegio.horarios.delete', $horario->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <td><a href="{{ route('editar_horarios', $horario->id) }}"
+                                        class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
+
+                                    <button class="btn btn-danger btn-sm" type="submit"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este horario?')"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+                            </form>
+                            </td>
                                 @endcan
                             </tr>
                         @endforeach

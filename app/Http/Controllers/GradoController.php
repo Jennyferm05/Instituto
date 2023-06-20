@@ -24,6 +24,22 @@ class GradoController extends Controller
     public function grados()
     {
         $grados = Grado::all();
-        return view('colegio.grados', compact('grados'));
+        return view('colegio.registros.grados', compact('grados'));
+    }
+    public function nuevo_grado()
+    {
+        $grados = Grado::all();
+        return view('colegio.registros.nueva_jornada', compact('grados'));
+    }
+
+    public function grado_nuevo(Request $request)
+    {
+        $grados = new Grado();
+        $grados->nombre = $request->input('nombre');
+
+        if ($grados->save()) {
+            $grados = Grado::all();
+            return redirect()->route('grados')->with('success', 'Calificación guardada exitosamente.');
+        }
     }
 }

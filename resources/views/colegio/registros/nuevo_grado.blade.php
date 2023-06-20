@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @php
-    $pageTitle = 'Nueva Jornadas';
+    $pageTitle = 'Nueva Grado';
 @endphp
 @section('content')
     <main class="py-4"></main>
@@ -11,8 +11,8 @@
                     <!--form mask starts-->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Registrar Jornada</h4>
-                            <form action="{{ route('jornada_nueva') }}" method="POST">
+                            <h4 class="card-title">Registrar Grado</h4>
+                            <form action="{{ route('grado_nuevo') }}" method="POST">
                                 @csrf
 
                                 <div class="form-group">
@@ -21,7 +21,7 @@
                                 </div>
 
                                 <button class="btn btn-primary" id="mi-boton" type="submit">Agregar</button>
-                                <a href="{{ route('mostrar_jornadas') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                                <a href="{{ route('grados') }}" class="btn btn-danger btn-xl">Cancelar</a>
                             </form>
                         </div>
                     </div>

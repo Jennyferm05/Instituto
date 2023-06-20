@@ -64,5 +64,51 @@ class HorarioController extends Controller
         return view('colegio.horarios.mostrar_horarios', compact('horarios', 'materias', 'grado_id', 'grados'));
     }
 
+    public function gethorarioedit($id)
+    {
+
+
+        $horario = Horario::find($id); 
+
+        $materias = Materia::all();
+        $grados = Grado::all();
+
+        return view('colegio.horarios.editar_horarios', compact('horario', 'materias', 'grados'));
+
+
+    }
+
+    public function puthorarioedit(Request $request, $id)
+    {
+        $horario = Horario::find($id); 
+
+        $horario->dia = $request->input('dia');
+        $horario->hora_inicio = $request->input('hora_inicio');
+        $horario->hora_fin = $request->input('hora_fin');
+        $horario->materia_id = $request->input('materia_id');
+        $horario->grado_id = $request->input('grado_id');
+
+
+
+        $horario->save();
+
+        return redirect()->route('mostrarhorarios')->with('modificado', 'Horario actualizado correctamente');
+    }
+
+    public function eliminar_horarios($id)
+    {
+        $horario = Horario::find($id);
+
+        if ($horario) {
+            $grados = Grado::all();
+            $materias = Materia::all();
+            $horario->delete();
+            $data = ['horario' => $horario, 'materias' => $materias, 'grados' => $grados];
+            return redirect()->route('mostrarhorarios', $data)->with('mensaje', 'Horario Eliminado Exitosamente');
+        } else {
+            return response()->json(['message' => 'No se encontró la persona'], 404);
+        }
+    }
+
 
 }

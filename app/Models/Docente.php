@@ -13,4 +13,10 @@ class Docente extends Model
     {
         return $this->belongsTo(Persona::class, 'persona_id');
     }
+    public static function rules()
+    {
+        return [
+            'persona_id' => 'unique:docentes,persona_id',
+        ];
+    }
 }

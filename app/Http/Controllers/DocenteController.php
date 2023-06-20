@@ -45,6 +45,7 @@ class DocenteController extends Controller
 
     public function postdocenteodd(Request $request)
     {
+        $request->validate(Docente::rules());
         $docente = new Docente();
         $docente->persona_id = $request->input('persona_id');
         $docente->jornada_id = $request->input('jornada_id');
@@ -87,7 +88,7 @@ class DocenteController extends Controller
         $personas = Persona::all();
         $jornadas = Jornada::all();
         $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
-            return view('colegio.docentes.docentes',$data);
+        return redirect()->route('mostrardocentes', $data)->with('modificado', 'Docente actualizado correctamente');
     }
     }
     public function getdocentedelete($id)

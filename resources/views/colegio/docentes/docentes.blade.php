@@ -9,11 +9,14 @@
     <div id="docentes" class="background">
         <main class="py-4"></main>
         @if (session('mensaje'))
-            <div class="alert alert-success">{{ session('mensaje') }}</div>
+            <div class="alert alert-danger">{{ session('mensaje') }}</div>
         @endif
         @if (session('agregado'))
             <div class="alert alert-success">{{ session('agregado') }}</div>
         @endif
+        @if (session('modificado'))
+        <div class="alert alert-warning">{{ session('agregado') }}</div>
+    @endif
 
         <div class="container">
             <div class="row justify-content-center">
@@ -60,8 +63,7 @@
                                             <td><a href="{{ route('getdocenteedot', $docente->id) }}"
                                                     class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="submit"
-                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este docente?')"><i
-                                                        class="fas fa-backspace"></i></button>
+                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este docente?')"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
                                         </form>
                                         </td>
                                     @endcan

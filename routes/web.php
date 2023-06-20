@@ -23,6 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 
 //Ruta de grados: solo vista
 Route::get('/Grados', [App\Http\Controllers\GradoController::class, 'grados'])->middleware('can:grados')->name('grados');
+Route::get('/Grados/Nuevo', [App\Http\Controllers\GradoController::class, 'nuevo_grado'])->middleware('can:grados')->name('nuevo_grado');
+Route::post('/Grados/Nuevo', [App\Http\Controllers\GradoController::class, 'grado_nuevo'])->middleware('can:grados')->name('grado_nuevo');
 
 
 //Rutas de alumnos: vista, agregar, editar y eliminar
@@ -46,7 +48,7 @@ Route::get('/Materias/Nueva_Materia', [App\Http\Controllers\MateriaController::c
 Route::post('/Materias/Nueva_Materia', [App\Http\Controllers\MateriaController::class, 'postmaterias'])->name('materia_agregada');
 Route::get('/Materias/Person_id', [App\Http\Controllers\ColegioController::class, 'mostrar_person_id'])->name('mostrar_person_id');
 
-Route::get('/Jornada', [App\Http\Controllers\ColegioController::class, 'mostrar_jornada'])->name('mostrar_jornada');
+
 
 
 
@@ -57,6 +59,9 @@ Route::get('/Horarios/materia', [App\Http\Controllers\ColegioController::class, 
 Route::get('/Horarios/grado', [App\Http\Controllers\ColegioController::class, 'mostrar_grado'])->middleware('can:mostrar_grado')->name('mostrar_grado');
 Route::get('/Horarios/Nuevos', [App\Http\Controllers\HorarioController::class, 'nuevo_horario'])->middleware('can:nuevo_horario')->name('nuevo_horario');
 Route::post('/Horarios/Nuevo', [App\Http\Controllers\HorarioController::class, 'store'])->middleware('can:store')->name('store');
+Route::get('/Horarios/Editar/{id}', [App\Http\Controllers\HorarioController::class, 'gethorarioedit'])->name('editar_horarios');
+Route::put('/Horarios/{id}', [App\Http\Controllers\HorarioController::class, 'puthorarioedit'])->name('horario_editado');
+Route::delete('/Horarios/delete/{id}', [App\Http\Controllers\HorarioController::class, 'eliminar_horarios'])->name('colegio.horarios.delete');
 
 
 //Rutas de perfiles y permisos: vista, agregar, editar y eliminar
@@ -94,3 +99,13 @@ Route::get('/Calificaciones/create', [App\Http\Controllers\CalificacionControlle
 Route::post('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'store'])->name('calificaciones.store');
 Route::get('/Calificaciones/{calificacion}/edit', [App\Http\Controllers\CalificacionController::class, 'edit'])->name('calificaciones.edit');
 Route::put('/Calificaciones/{calificacion}', [App\Http\Controllers\CalificacionController::class, 'update'])->name('calificaciones.update');
+
+
+
+
+Route::get('/Jornada',  [App\Http\Controllers\JornadaController::class, 'mostrar_jornada'])->name('mostrar_jornadas');
+Route::get('/Jornada/Nueva',  [App\Http\Controllers\JornadaController::class, 'nueva_jornada'])->name('nueva_jornada');
+Route::post('/Jornada/Nueva',  [App\Http\Controllers\JornadaController::class, 'jornada_nueva'])->name('jornada_nueva');
+
+
+

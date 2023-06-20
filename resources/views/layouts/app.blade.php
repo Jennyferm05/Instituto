@@ -97,7 +97,7 @@
                                     <a class="dropdown-item" href="{{ route('materias') }}">
                                         <i class="fa-solid fa-book-journal-whills fa-xs" style="color: #000000;"> Materias</i>
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('mostrar_jornada') }}">
+                                    <a class="dropdown-item" href="{{ route('mostrar_jornadas') }}">
                                         <i class="fa-solid fa-stopwatch-20 fa-xs" style="color: #06090f;"> Jornadas</i></a>
 
                                     <a class="dropdown-item" href="{{ route('grados') }}">
