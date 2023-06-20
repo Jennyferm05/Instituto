@@ -30,7 +30,7 @@
                                         @foreach ($grados as $grado)
                                         <td>{{ $grado->id }}</td>
                                         <td>{{ $grado->nombre }}</td>
-                                        <td>botones</td>
+                                        <td></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -22,10 +22,10 @@ class CalificacionController extends Controller
         $docentes = Docente::all();
         $actividades = Actividad::all();
         $calificaciones = Calificacion::all();
+        $personas = Persona::all();
 
-        return view('colegio.calificaciones.calificaciones', compact('alumnos', 'docentes', 'actividades', 'calificaciones'));
+        return view('colegio.calificaciones.calificaciones', compact('alumnos', 'docentes', 'actividades', 'calificaciones', 'personas'));
     }
-
     public function create()
     {
         $alumnos = Alumno::all();
@@ -59,7 +59,7 @@ class CalificacionController extends Controller
             $personas = Persona::all();
 
             $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'docentes' => $docentes, 'nombre_alumno' => $nombre_alumno, 'nombre_docente' => $nombre_docente];
-            return redirect()->route('mostrarcalificaciones')->with('success', 'Calificación agregada exitosamente.');
+            return redirect()->route('mostrarcalificaciones', $data)->with('success', 'Calificación agregada exitosamente.');
         }
     }
 }

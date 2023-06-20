@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actividad;
 use App\Models\Docente;
 use Illuminate\Http\Request;
 use App\Models\Horario;
 use App\Models\Materia;
 use App\Models\Grado;
 use App\Models\Alumno;
+use App\Models\Calificacion;
 use App\Models\Jornada;
 
 
@@ -36,13 +38,14 @@ class ColegioController extends Controller
     {
         $docentes = Docente::all();
         $docente_id = $docentes->pluck('docente_id')->toArray();
-        $materias = Horario::whereIn('id', $docente_id)->get();
+        $materias = Materia::whereIn('id', $docente_id)->get();
 
         return view('colegio.registros.index', [
             'docentes' => $docentes,
-            'materias' => $materias,
+            'materias' => $materias
         ]);
     }
+
     public function mostrar_materia(Request $request)
     {
         $materias = Materia::all();
@@ -56,17 +59,6 @@ class ColegioController extends Controller
     }
 
     public function mostrar_grado(Request $request)
-    {
-        $grados = Grado::all();
-        $grado_id = $grados->pluck('grado_id')->toArray();
-        $horarios = Horario::whereIn('id', $grado_id)->get();
-
-        return view('colegio.horarios.mostrar_horarios', [
-            'horarios' => $horarios,
-            'grados' => $grados
-        ]);
-    }
-    public function mostrar_nombre_calificaciones(Request $request)
     {
         $grados = Grado::all();
         $grado_id = $grados->pluck('grado_id')->toArray();
@@ -108,6 +100,17 @@ class ColegioController extends Controller
         return view('colegio.docentes.docentes', [
             'docentes' => $docentes,
             'jornadas' => $jornadas
+        ]);
+    }
+    public function mostrar_actividad(Request $request)
+    {
+        $actividades = Actividad::all();
+        $actividad_id = $actividades->pluck('actividad_id')->toArray();
+        $calificaciones = Calificacion::whereIn('id', $actividad_id)->get();
+
+        return view('colegio.calificaciones.calificaciones', [
+            'horarios' => $calificaciones,
+            'grados' => $actividades
         ]);
     }
 

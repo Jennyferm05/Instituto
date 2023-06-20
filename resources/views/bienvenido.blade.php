@@ -5,7 +5,7 @@
 @section('css')
     <style>
         .jumbotron {
-            background-image: url('https://images7.alphacoders.com/131/1312721.jpeg');
+            background-image: url('{{ asset('img/bienvenido.png') }}');
             background-size: 1518px 700px;
             background-position: center;
             color: #040202;

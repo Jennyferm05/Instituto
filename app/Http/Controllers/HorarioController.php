@@ -44,7 +44,7 @@ class HorarioController extends Controller
         $horarios = Horario::create($request->all());
 
         return redirect()->route('mostrarhorarios')
-            ->with('success', 'Horario creado correctamente');
+            ->with('success', 'Horario Creado Correctamente');
     }
 
     public function mostrarhorarios()
@@ -68,7 +68,7 @@ class HorarioController extends Controller
     {
 
 
-        $horario = Horario::find($id); 
+        $horario = Horario::find($id);
 
         $materias = Materia::all();
         $grados = Grado::all();
@@ -80,19 +80,16 @@ class HorarioController extends Controller
 
     public function puthorarioedit(Request $request, $id)
     {
-        $horario = Horario::find($id); 
+        $horario = Horario::find($id);
 
-        $horario->dia = $request->input('dia');
+        $horario->dia_de_la_semana = $request->input('dia_de_la_semana');
         $horario->hora_inicio = $request->input('hora_inicio');
         $horario->hora_fin = $request->input('hora_fin');
         $horario->materia_id = $request->input('materia_id');
         $horario->grado_id = $request->input('grado_id');
-
-
-
         $horario->save();
 
-        return redirect()->route('mostrarhorarios')->with('modificado', 'Horario actualizado correctamente');
+        return redirect()->route('mostrarhorarios')->with('modificado', 'Horario Modificado Correctamente');
     }
 
     public function eliminar_horarios($id)
@@ -104,7 +101,7 @@ class HorarioController extends Controller
             $materias = Materia::all();
             $horario->delete();
             $data = ['horario' => $horario, 'materias' => $materias, 'grados' => $grados];
-            return redirect()->route('mostrarhorarios', $data)->with('mensaje', 'Horario Eliminado Exitosamente');
+            return redirect()->route('mostrarhorarios', $data)->with('mensaje', 'Horario Eliminado Con Exito!!');
         } else {
             return response()->json(['message' => 'No se encontró la persona'], 404);
         }

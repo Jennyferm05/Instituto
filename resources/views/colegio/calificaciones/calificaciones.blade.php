@@ -6,8 +6,8 @@
 @section('content')
     <main class="py-4"></main>
     @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -24,26 +24,51 @@
                                 <th>Actividad Id</th>
                                 <th>Promedio</th>
                                 <th style="width: 200px;"><a href="{{ route('calificaciones.create') }}"
-                                    class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                                        class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($calificaciones as $calificacion)
                                 <tr>
+
                                     <td>{{ $calificacion->id }}</td>
-                                    <td>{{ $calificacion->alumno_id }}</td>
-                                    <td>{{ $calificacion->docente_id }}</td>
-                                    <td>{{ $calificacion->actividad_id }}</td>
-                                    <td>{{ $calificacion->promedio }}</td>
-                                    <td>botones-editar-eliminar</td>
-                                </tr>
+                                    @foreach ($alumnos as $alumno)
+                                        @foreach ($personas as $persona)
+                                            @if ($calificacion->alumno_id == $alumno->id)
+                                                <td>{{ $alumno->id }} {{ $alumno->persona->primer_nombre }}
+                                                    {{ $alumno->persona->primer_apellido }}</td>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                @foreach ($docentes as $docente)
+                                    @foreach ($personas as $persona)
+                                        @if ($calificacion->docente_id == $docente->id)
+                                            <td>{{ $docente->id }} {{ $docente->persona->primer_nombre }}
+                                                {{ $docente->persona->primer_apellido }}</td>
+                                        @break
+                                    @endif
+                                @endforeach
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                            @foreach ($actividades as $actividad)
+                                @if ($calificacion->actividad_id == $actividad->id)
+                                    <td>{{ $actividad->id }} {{ $actividad->nombre }}</td>
+                                @break
+                            @endif
+                        @endforeach
+                        <td>{{ $calificacion->promedio }}</td>
+                        <td></td>
+
+
+
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+</div>
+</div>
+</div>
 
 @section('scripts')
 

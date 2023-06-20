@@ -33,7 +33,7 @@
                                         <tr>
                                             <td>{{ $jornada->id }}</td>
                                             <td>{{ $jornada->nombre }}</td>
-                                            <td>botones-editar-eliminar</td>
+                                            <td></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

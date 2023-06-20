@@ -3,41 +3,15 @@
     $pageTitle = 'Horarios';
 @endphp
 @section('css')
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: center;
-            border: 1px solid black;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 @endsection
 @section('content')
     <main class="py-4"></main>
-    @if (session('mensaje'))
-    <div class="alert alert-danger">{{ session('mensaje') }}</div>
-@endif
-@if (session('modificado'))
-        <div class="alert alert-warning">{{ session('modificado') }}</div>
-    @endif
 
-    @if (session('agregado'))
-    <div class="alert alert-success">{{ session('agregado') }}</div>
-@endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header bg-warning">Agregar Horarios</div>
+                    <div class="card-header bg-info">Agregar Horarios</div>
                     <div class="card-body">
                         <form action="{{ route('store') }}" method="POST">
                             @csrf
@@ -87,8 +61,8 @@
                                 </select>
                             </div>
 
-                                <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>
-                                <a href="{{ route('mostrarhorarios') }}" class="btn btn-danger btn-xl">Cancelar</a>
+                            <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>
+                            <a href="{{ route('mostrarhorarios') }}" class="btn btn-danger btn-xl">Cancelar</a>
 
                         </form>
 
@@ -98,5 +72,3 @@
         </div>
     </div>
 @endsection
-
-

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Materia;
 use App\Models\Grado;
 use App\Models\Persona;
-use App\Models\Jornada;
+use App\Models\Actividad;
 use Illuminate\Validation\Rule;
 
 class MateriaController extends Controller
@@ -58,6 +58,17 @@ class MateriaController extends Controller
             $data = ['alumnos' => $alumnos, 'personas' => $personas, 'docentes' => $docentes];
             return redirect()->route('materias', $data)->with('success', 'Calificación agregada exitosamente.');
         }
+    }
+    public function mostrar_actividad_id(Request $request, $id)
+    {
+        $actividades = Actividad::all();
+        $actividad_id = $actividades->pluck('actividad_id')->toArray();
+        $calificaciones = Materia::whereIn('id', $actividad_id)->get();
+
+        return view('colegio.registros.calificaciones', [
+            'calificaciones' => $calificaciones,
+            'actividades' => $actividades
+        ]);
     }
 
 

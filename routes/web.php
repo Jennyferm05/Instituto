@@ -95,6 +95,7 @@ Route::delete('/Docentes/delete/{id}', [App\Http\Controllers\DocenteController::
 
 
 Route::get('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'mostrarcalificaciones'])->name('mostrarcalificaciones');
+Route::get('/Calificaciones/actividad', [App\Http\Controllers\ColegioController::class, 'mostrar_actividad'])->name('mostrar_actividad');
 Route::get('/Calificaciones/create', [App\Http\Controllers\CalificacionController::class, 'create'])->name('calificaciones.create');
 Route::post('/Calificaciones', [App\Http\Controllers\CalificacionController::class, 'store'])->name('calificaciones.store');
 Route::get('/Calificaciones/{calificacion}/edit', [App\Http\Controllers\CalificacionController::class, 'edit'])->name('calificaciones.edit');
