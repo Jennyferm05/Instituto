@@ -19,7 +19,7 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            color: #030202;
+            color: #484444;
             text-align: center;
             padding: 10px;
         }
@@ -168,14 +168,15 @@
     </nav>
 
     @yield('content')
-    <br>
 
 
     @include('layouts.js')
     @section('scripts')
     @show
+    <br>
+
     <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-2" style="background-color: #000000">
+        <div class="text-center p-2">
             © 2023 Copyright:
             <a class="text-dark" href="{{ route('home') }}">EscuadronSuicida.com</a>
         </div>
