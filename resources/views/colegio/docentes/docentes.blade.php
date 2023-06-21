@@ -15,8 +15,8 @@
             <div class="alert alert-success">{{ session('agregado') }}</div>
         @endif
         @if (session('modificado'))
-        <div class="alert alert-warning">{{ session('agregado') }}</div>
-    @endif
+            <div class="alert alert-warning">{{ session('agregado') }}</div>
+        @endif
 
         <div class="container">
             <div class="row justify-content-center">
@@ -31,8 +31,10 @@
                                         <th>Id</th>
                                         <th>Persona Id</th>
                                         <th>Jornada</th>
-                                        <th><a href="{{ route('getdocenteodd') }}" class="btn btn-success btn-sm"><i
-                                                    class="fas fa-plus"></i></a></th>
+                                        @can('getdocenteodd')
+                                            <th><a href="{{ route('getdocenteodd') }}" class="btn btn-success btn-sm"><i
+                                                        class="fas fa-plus"></i></a></th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +44,8 @@
 
                                             @foreach ($personas as $persona)
                                                 @if ($docente->persona_id == $persona->id)
-                                                    <td>{{ $docente->persona_id }} {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                                    <td>{{ $docente->persona_id }} {{ $persona->primer_nombre }}
+                                                        {{ $persona->primer_apellido }}</td>
                                                 @break
                                             @endif
                                         @endforeach
@@ -63,7 +66,9 @@
                                             <td><a href="{{ route('getdocenteedot', $docente->id) }}"
                                                     class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm" type="submit"
-                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este docente?')"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este docente?')"><i
+                                                        class="fa-solid fa-trash-can"
+                                                        style="color: #000000;"></i></button>
                                         </form>
                                         </td>
                                     @endcan
@@ -77,6 +82,7 @@
     </div>
 </div>
 </div>
+
 
 @section('scripts')
 @show

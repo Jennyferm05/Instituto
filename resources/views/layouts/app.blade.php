@@ -13,6 +13,17 @@
         {{ isset($pageTitle) ? $pageTitle : config('app.name', 'Laravel') }}</title>
 
     @yield('css')
+    <style>
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #030202;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 
     @include('layouts.css')
     <!-- Scripts -->
@@ -55,7 +66,7 @@
                             <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house fa-xs"
                                     style="color: #000000;">{{ __(' Inicio') }}</i></a>
                         </li>
-                        @can('mostraralumnos')
+                        @can('alumnos')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('mostraralumnos') }}"><i
                                         class="fa-sharp fa-solid fa-school fa-xs"
@@ -103,6 +114,9 @@
                                     <a class="dropdown-item" href="{{ route('grados') }}">
                                         <i class="fa-solid fa-arrow-down-1-9 fa-xs" style="color: #04070c;"> Grados</i></a>
 
+                                    <a class="dropdown-item" href="{{ route('mostrar_actividades') }}">
+                                        <i class="fa-solid fa-chart-line fa-xs" style="color: #000000;"> Actividades</i></a>
+
 
                                 </div>
                             </li>
@@ -138,7 +152,8 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-right-from-bracket fa-xs" style="color: #000000;">{{ __(' Cerrar SesiÓn') }}</i>
+                                    <i class="fa-solid fa-right-from-bracket fa-xs"
+                                        style="color: #000000;">{{ __(' Cerrar SesiÓn') }}</i>
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -151,13 +166,20 @@
             </div>
         </div>
     </nav>
+
     @yield('content')
+    <br>
+
 
     @include('layouts.js')
     @section('scripts')
     @show
-
-
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-2" style="background-color: #000000">
+            © 2023 Copyright:
+            <a class="text-dark" href="{{ route('home') }}">EscuadronSuicida.com</a>
+        </div>
+    </footer>
 
 </body>
 

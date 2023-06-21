@@ -62,4 +62,29 @@ class CalificacionController extends Controller
             return redirect()->route('mostrarcalificaciones', $data)->with('success', 'Calificación agregada exitosamente.');
         }
     }
+
+    public function edit(Calificacion $calificacion)
+    {
+        $alumnos = Alumno::all();
+        $docentes = Docente::all();
+        $actividades = Actividad::all();
+        return view('colegio.calificaciones.edit', compact('calificacion', 'alumnos', 'docentes', 'actividades'));
+    }
+
+    public function update(Request $request, Calificacion $calificacion)
+    {
+        $request->validate([
+            'alumno_id' => 'required',
+            'docente_id' => 'required',
+            'actividad_id' => 'required',
+            'nota1' => 'required|numeric',
+            'nota2' => 'required|numeric',
+            'nota3' => 'required|numeric',
+
+        ]);
+
+        $calificacion->update($request->all());
+
+        return redirect()->route('mostrarcalificaciones')->with('success', 'Calificación actualizada exitosamente.');
+    }
 }

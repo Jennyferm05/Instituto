@@ -23,8 +23,10 @@
                                 <th>Docente Id</th>
                                 <th>Actividad Id</th>
                                 <th>Promedio</th>
-                                <th style="width: 200px;"><a href="{{ route('calificaciones.create') }}"
-                                        class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                                @can('create_calificaciones')
+                                    <th style="width: 200px;"><a href="{{ route('calificaciones.create') }}"
+                                            class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +59,14 @@
                             @endif
                         @endforeach
                         <td>{{ $calificacion->promedio }}</td>
-                        <td></td>
+                        @can('create_calificaciones')
+                            <td><a href="{{ route('calificaciones.edit', $calificacion->id) }}"
+                                    class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
+
+                                </form>
+                            @endcan
+
 
 
 
@@ -69,6 +78,7 @@
 </div>
 </div>
 </div>
+
 
 @section('scripts')
 

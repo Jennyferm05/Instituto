@@ -17,8 +17,8 @@
     @endif
 
     @if (session('agregado'))
-    <div class="alert alert-success">{{ session('agregado') }}</div>
-@endif
+        <div class="alert alert-success">{{ session('agregado') }}</div>
+    @endif
     <section class="content">
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -56,7 +56,8 @@
                                     <th>Jornada</th>
                                     @can('getalumnoadd')
                                         <th style="width: 200px;"><a href="{{ route('colegio.alumno.add') }}"
-                                                class="btn btn-success btn-sm"><i class="fa-solid fa-circle-plus" style="color: #050505;"></i></a></th>
+                                                class="btn btn-success btn-sm"><i class="fa-solid fa-circle-plus"
+                                                    style="color: #050505;"></i></a></th>
                                     @endcan
                                 </tr>
                             </thead>
@@ -67,7 +68,8 @@
                                         <td>{{ $alumno->id }}</td>
                                         @foreach ($personas as $persona)
                                             @if ($alumno->persona_id == $persona->id)
-                                                <td>{{ $alumno->persona_id }} {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</td>
+                                                <td>{{ $alumno->persona_id }} {{ $persona->primer_nombre }}
+                                                    {{ $persona->primer_apellido }}</td>
                                             @break
                                         @endif
                                     @endforeach
@@ -93,10 +95,10 @@
 
 
                                         <button class="btn btn-danger btn-sm" type="submit"
-                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta alumno?')"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta alumno?')"><i
+                                                class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
                                 </form>
                                 </td>
-
                             @endcan
                         </tr>
                     @endforeach
@@ -107,7 +109,7 @@
 </div>
 </div>
 </div>
-<br>
+
 
 
 @section('scripts')

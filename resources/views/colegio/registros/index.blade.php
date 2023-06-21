@@ -38,8 +38,8 @@
         <main class="py-4"></main>
 
         @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -69,7 +69,8 @@
                                             @foreach ($docentes as $docente)
                                                 @foreach ($personas as $persona)
                                                     @if ($materia->docente_id == $docente->id)
-                                                        <td>{{ $docente->id}} {{ $docente->persona->primer_nombre}} {{ $docente->persona->primer_apellido}}</td>
+                                                        <td>{{ $docente->id }} {{ $docente->persona->primer_nombre }}
+                                                            {{ $docente->persona->primer_apellido }}</td>
                                                     @break
                                                 @endif
                                             @endforeach
@@ -97,6 +98,7 @@
                 de macrovector</a> en Freepik</p>
     </div>
 </div>
+
 
 @section('scripts')
 @show

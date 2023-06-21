@@ -2,29 +2,29 @@ body {
     background-color: #111;
     color: #fff;
     font-family: Arial, sans-serif;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  form {
+}
+
+form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
-  
-  form label, form select, form input {
+}
+
+form label, form select, form input {
     margin-right: 10px;
-  }
-  
-  form input[type="text"] {
+}
+
+form input[type="text"] {
     width: 200px;
-  }
-  
-  table {
+}
+
+table {
     width: 100%;
-  }
+}

@@ -60,7 +60,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
                             <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>
                             <a href="{{ route('mostrarhorarios') }}" class="btn btn-danger btn-xl">Cancelar</a>
 
