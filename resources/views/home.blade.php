@@ -100,8 +100,9 @@
                 </div>
             </div>
         </div><br>
-        <footer class="bg-light text-center text-lg-start">
-            <div class="text-center p-3" style="background-color: #979A9A;">
+        <footer class="footer">
+
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2023 Copyright:
                 <a class="text-dark" href="{{ route('home') }}">EscuadronSuicida.com</a>
             </div>
