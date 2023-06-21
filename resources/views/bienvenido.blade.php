@@ -20,4 +20,10 @@
         <div class="container">
         </div>
     </div>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: #ffffff;">
+            © 2023 Copyright:
+            <a class="text-dark" href="{{ route('home') }}">EscuadronSuicida.com</a>
+        </div>
+    </footer>
 @endsection

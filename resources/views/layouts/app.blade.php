@@ -13,18 +13,6 @@
         {{ isset($pageTitle) ? $pageTitle : config('app.name', 'Laravel') }}</title>
 
     @yield('css')
-    <style>
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            color: #484444;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
-
     @include('layouts.css')
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -166,22 +154,11 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
-
 
     @include('layouts.js')
     @section('scripts')
     @show
-    <br>
-
-    <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-2">
-            © 2023 Copyright:
-            <a class="text-dark" href="{{ route('home') }}">EscuadronSuicida.com</a>
-        </div>
-    </footer>
-
 </body>
 
 </html>
