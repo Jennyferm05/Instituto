@@ -3,36 +3,7 @@
     $pageTitle = 'Materias';
 @endphp
 @section('css')
-    <style>
-        .custom {
-            background-image: url('../img/7502.png');
-            background-size: cover;
-            background-position: center;
-            color: #110404;
-            height: 700px;
-        }
-
-        #j {
-            background-color: transparent;
-            border: 1px solid white;
-            border-radius: 3%;
-            padding-bottom: 5%;
-        }
-
-        .container {
-            position: relative;
-        }
-
-        .bottom-right {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin-bottom: 10px;
-            margin-right: 10px;
-        }
-    </style>
-@endsection
-
+@show
 @section('content')
     <div class="custom">
         <main class="py-4"></main>
@@ -91,11 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="bottom-right">
-        <p><a
-                href="https://www.freepik.es/vector-gratis/concepto-geopraphy-conjunto-leccion-escuela-dibujos-animados-retro_2873404.htm#query=materias%20escolares&position=0&from_view=search&track=ais">Imagen
-                de macrovector</a> en Freepik</p>
     </div>
 </div>
 
