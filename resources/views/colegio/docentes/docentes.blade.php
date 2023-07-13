@@ -26,7 +26,7 @@
 
                         <div class="card-body">
                             <table id="datatable" class="table table-sm table-striped">
-                                <thead>
+                            <thead class="bg-primary text-white">
                                     <tr>
                                         <th>Id</th>
                                         <th>Persona Id</th>

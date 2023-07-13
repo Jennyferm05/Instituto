@@ -6,7 +6,8 @@
 @show
 
 @section('content')
-    <main class="py-4"></main>
+<div class="custom">
+        <main class="py-4"></main>
 
     @if (session('mensaje'))
         <div class="alert alert-danger">{{ session('mensaje') }}</div>
@@ -41,10 +42,11 @@
         </div>
     </section><br>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Alumnos</div>
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">Alumnos</div>
 
                     <div class="card-body">
                         <table id="datatable" class="table table-sm table-striped">
@@ -108,8 +110,12 @@
     </div>
 </div>
 </div>
-<br>
+    </div>
+    </div>
 </div>
+</div>
+    
+
 
 
 

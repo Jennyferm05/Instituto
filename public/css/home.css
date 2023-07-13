@@ -1,5 +1,5 @@
 #home {
-    background-image: url('../img/home.png');
+    background-image: url('../img/home.jpg');
     background-size: cover;
     background-position: center;
     color: #000000;
@@ -19,24 +19,4 @@
 
 .navbar {
     background-color: #2ECC71;
-}
-
-#docentes {
-    background-image: url('../img/home.png');
-    background-size: cover;
-    background-position: center;
-    color: #000000;
-    height: 700px;
-}
-
-#doce {
-    background-color: #2ECC71;
-}
-
-#docentet {
-    background-color: rgb(245, 245, 245);
-}
-
-#borde_docente {
-    border: #000000;
 }
