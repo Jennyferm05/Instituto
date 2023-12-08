@@ -28,32 +28,36 @@
 <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
-<script>
-    import Swal from 'sweetalert2';
+<!--Sweetalert2 local para utilizar en la plantilla-->
+<script src="{{ asset('AdminLTE/plugins/sweetalert2/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
-// ...
+<!-- Alerta para guardar y editar -->
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Exito!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 4000 // Tiempo en milisegundos (2 segundos en este caso)
+        });
+    </script>
+@endif
 
-// Agrega el código para mostrar la alerta cuando se hace clic en el botón
-document.getElementById('mi-boton').addEventListener('click', function() {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer);
-      toast.addEventListener('mouseleave', Swal.resumeTimer);
-    }
-  });
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 4000 // Tiempo en milisegundos (2 segundos en este caso)
+        });
+    </script>
+@endif
 
-  Toast.fire({
-    icon: 'success',
-    title: '¡Inicio de sesión exitoso!'
-  });
-});
-
-</script>
 
 
 
@@ -88,5 +92,3 @@ document.getElementById('mi-boton').addEventListener('click', function() {
 
 
 <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
-
-

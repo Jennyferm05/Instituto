@@ -38,11 +38,20 @@ class PersonaController extends Controller
     }
     public function rol_asignado(Request $request, User $user)
     {
-        $user->syncRoles($request->input('roles'));
+        $selectedRoleId = $request->input('selected_role');
 
-        return redirect()->route('mostrarpersonas')
-            ->with('info', 'Se asigno rol correctamente');
+        if (!empty($selectedRoleId)) {
+            $selectedRole = Role::find($selectedRoleId);
+
+            if ($selectedRole) {
+                $user->syncRoles([$selectedRole->id]);
+                return redirect()->route('mostrarpersonas')->with('success', 'Se asignó el rol correctamente');
+            }
+        }
+
+        return redirect()->route('mostrarpersonas')->with('error', 'Error al asignar el rol');
     }
+
 
 
 

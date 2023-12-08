@@ -41,16 +41,14 @@
 
 
                                     <td>{{ $user->email }}</td>
-                                    <td><a href="{{ route('asignar_rol', $user) }}" class="btn btn-warning btn-sm"><i class="fa-brands fa-atlassian" style="color: #000000;"></i></a>
-                                        <a href="" class="btn btn-info btn-sm"><i class="fa-solid fa-user-pen" style="color: #000000;"></i></a>
-                                        <button class="btn btn-danger btn-sm" id="prueba"
-                                        value=""><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+                                    <td><a href="{{ route('asignar_rol', $user) }}" class="btn btn-warning btn-sm"><i
+                                                class="fa-brands fa-atlassian" style="color: #000000;"></i></a>
+                                        <a href="" class="btn btn-info btn-sm"><i class="fa-solid fa-user-pen"
+                                                style="color: #000000;"></i></a>
+                                        <button class="btn btn-danger btn-sm" id="prueba" value=""><i
+                                                class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
 
                                     </td>
-
-
-
-
                                 </tr>
                             @endforeach
                         </tbody>

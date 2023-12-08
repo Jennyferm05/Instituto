@@ -7,17 +7,6 @@
 
 @section('content')
     <div id="docentes" class="background">
-        <main class="py-4"></main>
-        @if (session('mensaje'))
-            <div class="alert alert-danger">{{ session('mensaje') }}</div>
-        @endif
-        @if (session('agregado'))
-            <div class="alert alert-success">{{ session('agregado') }}</div>
-        @endif
-        @if (session('modificado'))
-            <div class="alert alert-warning">{{ session('agregado') }}</div>
-        @endif
-
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
