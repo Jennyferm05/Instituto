@@ -19,7 +19,6 @@
                                     <th>Subnombre</th>
                                     <th>Persona_id</th>
                                     <th>Nombres</th>
-
                                     <th>Correo</th>
                                     <th><a href="{{ route('crear') }}" class="btn btn-success btn-sm"><i
                                                 class="fas fa-plus"></i></a></th>

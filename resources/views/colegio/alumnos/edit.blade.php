@@ -18,7 +18,7 @@
                             @csrf
                             @method('PUT')
                             <label for="persona_id">Persona:</label>
-                            <select class="form-control" name="persona_id" id="persona_id">
+                            <select class="form-control" name="persona_id" id="persona_id" required>
                                 @foreach ($personas as $persona)
                                     <option value="{{ $persona->id }}" @if ($persona->id === $alumno->persona_id) selected @endif>
                                         {{ $persona->primer_nombre }} {{ $persona->primer_apellido }}</option>
@@ -26,7 +26,7 @@
                             </select>
 
                             <label for="grado_id">Grado:</label>
-                            <select class="form-control" name="grado_id" id="grado_id">
+                            <select class="form-control" name="grado_id" id="grado_id" required>
                                 @foreach ($grados as $grado)
                                     <option value="{{ $grado->id }}" @if ($grado->id === $alumno->grado_id) selected @endif>
                                         {{ $grado->nombre }}</option>
@@ -34,7 +34,7 @@
                             </select>
 
                             <label for="jornada_id">Jornada:</label>
-                            <select class="form-control" name="jornada_id" id="jornada_id">
+                            <select class="form-control" name="jornada_id" id="jornada_id" required>
                                 @foreach ($jornadas as $jornada)
                                     <option value="{{ $jornada->id }}" @if ($jornada->id === $alumno->jornada_id) selected @endif>
                                         {{ $jornada->nombre }}</option>

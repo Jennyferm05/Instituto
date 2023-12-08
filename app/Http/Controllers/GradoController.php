@@ -24,12 +24,12 @@ class GradoController extends Controller
     public function grados()
     {
         $grados = Grado::all();
-        return view('colegio.registros.grados', compact('grados'));
+        return view('colegio.registros.grados_jornadas.grados', compact('grados'));
     }
     public function nuevo_grado()
     {
         $grados = Grado::all();
-        return view('colegio.registros.nuevo_grado', compact('grados'));
+        return view('colegio.registros.grados_jornadas.nuevo_grado', compact('grados'));
     }
 
     public function grado_nuevo(Request $request)

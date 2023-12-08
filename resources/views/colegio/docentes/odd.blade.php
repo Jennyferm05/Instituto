@@ -15,7 +15,7 @@
                                 @csrf
 
                                 <label for="persona_id">Selecciona Persona Id:</label>
-                                <select class="form-control" name="persona_id" id="persona_id">
+                                <select class="form-control" name="persona_id" id="persona_id" required>
                                     <option value="">Seleccione Persona Id:</option>
                                     @foreach ($personas as $persona)
                                         <option value="{{ $persona->id }}">{{ $persona->primer_nombre }}
@@ -23,7 +23,7 @@
                                     @endforeach
                                 </select><br>
                                 <label for="jornada_id">Selecciona Jornada Id:</label>
-                                <select class="form-control" name="jornada_id" id="jornada_id">
+                                <select class="form-control" name="jornada_id" id="jornada_id" required>
                                     <option value="">Seleccione Jornada Id:</option>
                                     @foreach ($jornadas as $jornada)
                                         <option value="{{ $jornada->id }}">{{ $jornada->nombre }}

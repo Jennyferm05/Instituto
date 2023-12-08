@@ -17,7 +17,7 @@
                             @method('PUT')
 
                             <label for="dia_de_la_semana">Día:</label>
-                            <select class="form-control" name="dia_de_la_semana" id="dia_de_la_semana">
+                            <select class="form-control" name="dia_de_la_semana" id="dia_de_la_semana" required>
                                 <option value="Lunes" {{ $horario->dia_de_la_semana == 'Lunes' ? 'selected' : '' }}>Lunes
                                 </option>
                                 <option value="Martes" {{ $horario->dia_de_la_semana == 'Martes' ? 'selected' : '' }}>Martes
@@ -33,14 +33,14 @@
 
                             <label for="hora_inicio">Hora de inicio:</label>
                             <input class="form-control" type="time" name="hora_inicio" id="hora_inicio"
-                                value="{{ $horario->hora_inicio }}">
+                                value="{{ $horario->hora_inicio }}" required>
 
                             <label for="hora_fin">Hora de fin:</label>
                             <input class="form-control" type="time" name="hora_fin" id="hora_fin"
-                                value="{{ $horario->hora_fin }}">
+                                value="{{ $horario->hora_fin }}" required>
 
                             <label for="materia_id">Materia:</label>
-                            <select class="form-control" name="materia_id" id="materia_id">
+                            <select class="form-control" name="materia_id" id="materia_id" required>
                                 @foreach ($materias as $materia)
                                     <option value="{{ $materia->id }}"
                                         {{ $horario->materia_id == $materia->id ? 'selected' : '' }}>
@@ -50,7 +50,7 @@
                             </select>
 
                             <label for="grado_id">Grado:</label>
-                            <select class="form-control" name="grado_id" id="grado_id">
+                            <select class="form-control" name="grado_id" id="grado_id" required>
                                 @foreach ($grados as $grado)
                                     <option value="{{ $grado->id }}"
                                         {{ $horario->grado_id == $grado->id ? 'selected' : '' }}>

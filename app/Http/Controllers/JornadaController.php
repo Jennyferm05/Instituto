@@ -10,12 +10,12 @@ class JornadaController extends Controller
     public function mostrar_jornada()
     {
         $jornadas = Jornada::all();
-        return view('colegio.registros.mostrar_jornada', compact('jornadas'));
+        return view('colegio.registros.grados_jornadas.mostrar_jornada', compact('jornadas'));
     }
     public function nueva_jornada()
     {
         $jornadas = Jornada::all();
-        return view('colegio.registros.nueva_jornada', compact('jornadas'));
+        return view('colegio.registros.grados_jornadas.nueva_jornada', compact('jornadas'));
     }
 
     public function jornada_nueva(Request $request)

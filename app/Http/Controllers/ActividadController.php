@@ -25,12 +25,12 @@ class ActividadController extends Controller
     public function mostrar_actividades()
     {
         $actividades = Actividad::all();
-        return view('colegio.registros.actividades', compact('actividades'));
+        return view('colegio.registros.actividades_materias.actividades', compact('actividades'));
     }
     public function nueva_actividad()
     {
         $actividades = Actividad::all();
-        return view('colegio.registros.nueva_actividad', compact('actividades'));
+        return view('colegio.registros.actividades_materias.nueva_actividad', compact('actividades'));
     }
 
     public function actividad_nueva(Request $request)

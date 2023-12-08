@@ -90,8 +90,6 @@
                                         Registros
                                     </i>
                                 </a>
-
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('materias') }}">
                                         <i class="fa-solid fa-book-journal-whills fa-xs" style="color: #000000;"> Materias</i>
@@ -104,7 +102,6 @@
 
                                     <a class="dropdown-item" href="{{ route('mostrar_actividades') }}">
                                         <i class="fa-solid fa-chart-line fa-xs" style="color: #000000;"> Actividades</i></a>
-
 
                                 </div>
                             </li>

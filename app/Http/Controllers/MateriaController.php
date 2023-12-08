@@ -33,12 +33,12 @@ class MateriaController extends Controller
         $docentes = Docente::all();
         $personas = Persona::all();
         $grados = Grado::all();
-        return view('colegio.registros.index', compact('docentes', 'materias', 'personas', 'grados'));
+        return view('colegio.registros.actividades_materias.index', compact('docentes', 'materias', 'personas', 'grados'));
     }
     public function nueva_materia()
     {
         $docentes = Docente::all();
-        return view('colegio.registros.materias', compact('docentes'));
+        return view('colegio.registros.actividades_materias.materias', compact('docentes'));
     }
     public function postmaterias(Request $request)
     {

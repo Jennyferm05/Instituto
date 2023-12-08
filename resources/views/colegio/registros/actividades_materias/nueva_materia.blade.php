@@ -28,17 +28,13 @@
                                 </div>
 
                                 <label for="docente_id">Selecciona Docente Id:</label>
-                                <select class="form-control" name="docente_id" id="docente_id">
+                                <select class="form-control" name="docente_id" id="docente_id" required>
                                     <option value="">Seleccionar docente</option>
                                     @foreach ($docentes as $docente)
                                             <option value="{{ $docente->id }}">{{ $docente->persona->primer_nombre}}</option>
 
                                     @endforeach
-
-
-
                                 </select><br>
-
                                 <button class="btn btn-primary" id="mi-boton" type="submit">Agregar</button>
                                 <a href="{{ route('materias') }}" class="btn btn-danger btn-xl">Cancelar</a>
                             </form>
