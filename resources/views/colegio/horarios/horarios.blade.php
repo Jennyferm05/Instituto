@@ -18,7 +18,7 @@
 
                             <div class="form-group">
                                 <label for="dia_de_la_semana">Dia de la semana:</label>
-                                <select class="form-control" id="dia_de_la_semana" name="dia_de_la_semana">
+                                <select class="form-control" id="dia_de_la_semana" name="dia_de_la_semana" required>
 
                                     <option value="">Seleccione dia</option>
                                     <option value="Lunes">Lunes</option>

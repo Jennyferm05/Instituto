@@ -14,7 +14,7 @@
                             @csrf
 
                             <label for="subnombre" class="form-label">SubNombre</label>
-                            <input type="text" class="form-control" id="subnombre" name="subnombre" placeholder="Subnombre">
+                            <input type="text" class="form-control" id="subnombre" name="subnombre" placeholder="Subnombre" required>
                             <br>
                             <label for="persona_id">Selecciona Persona Id:</label>
                             <select class="form-control" name="persona_id" id="persona_id">
@@ -25,10 +25,10 @@
                                 @endforeach
                             </select><br>
                             <label for="email" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="email">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
                             <br>
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
                             <br>
 
                             <button class="btn btn-primary" name="agregar" type="submit">Agregar</button>

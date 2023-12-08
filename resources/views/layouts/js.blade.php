@@ -78,7 +78,7 @@ document.getElementById('mi-boton').addEventListener('click', function() {
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["copy", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
 
     });
