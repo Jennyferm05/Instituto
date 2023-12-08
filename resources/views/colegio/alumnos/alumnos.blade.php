@@ -6,115 +6,105 @@
 @show
 
 @section('content')
-<div class="custom">
+    <div class="custom">
         <main class="py-4"></main>
-
-    @if (session('mensaje'))
-        <div class="alert alert-danger">{{ session('mensaje') }}</div>
-    @endif
-
-    @if (session('modificado'))
-        <div class="alert alert-warning">{{ session('modificado') }}</div>
-    @endif
-
-    @if (session('agregado'))
-        <div class="alert alert-success">{{ session('agregado') }}</div>
-    @endif
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h6 class="card-title">Promedios</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="areaChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h6 class="card-title">Promedios</h6>
                             </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <canvas id="areaChart"
+                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
-        </div>
-    </section><br>
-    <div class="container">
-    <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">Alumnos</div>
+        </section><br>
+        <div class="container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Alumnos</div>
 
-                    <div class="card-body">
-                        <table id="datatable" class="table table-sm table-striped">
-                            <thead class="bg-danger text-white">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Persona Id</th>
-                                    <th>Grado Id</th>
-                                    <th>Jornada</th>
-                                    @can('getalumnoadd')
-                                        <th style="width: 200px;"><a href="{{ route('colegio.alumno.add') }}"
-                                                class="btn btn-success btn-sm"><i class="fa-solid fa-circle-plus"
-                                                    style="color: #050505;"></i></a></th>
-                                    @endcan
-                                </tr>
-                            </thead>
-                            <tbody>
+                            <div class="card-body">
+                                <table id="datatable" class="table table-sm table-striped">
+                                    <thead class="bg-danger text-white">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Persona Id</th>
+                                            <th>Grado Id</th>
+                                            <th>Jornada</th>
+                                            @can('getalumnoadd')
+                                                <th style="width: 200px;"><a href="{{ route('colegio.alumno.add') }}"
+                                                        class="btn btn-success btn-sm"><i class="fa-solid fa-circle-plus"
+                                                            style="color: #050505;"></i></a></th>
+                                            @endcan
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                @foreach ($alumnos as $alumno)
-                                    <tr>
-                                        <td>{{ $alumno->id }}</td>
-                                        @foreach ($personas as $persona)
-                                            @if ($alumno->persona_id == $persona->id)
-                                                <td>{{ $alumno->persona_id }} {{ $persona->primer_nombre }}
-                                                    {{ $persona->primer_apellido }}</td>
+                                        @foreach ($alumnos as $alumno)
+                                            <tr>
+                                                <td>{{ $alumno->id }}</td>
+                                                @foreach ($personas as $persona)
+                                                    @if ($alumno->persona_id == $persona->id)
+                                                        <td>{{ $alumno->persona_id }} {{ $persona->primer_nombre }}
+                                                            {{ $persona->primer_apellido }}</td>
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                            @foreach ($grados as $grado)
+                                                @if ($alumno->grado_id == $grado->id)
+                                                    <td>{{ $alumno->grado_id }} {{ $grado->nombre }}</td>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @foreach ($jornadas as $jornada)
+                                            @if ($alumno->jornada_id == $jornada->id)
+                                                <td>{{ $alumno->jornada_id }} {{ $jornada->nombre }}</td>
                                             @break
                                         @endif
                                     @endforeach
-                                    @foreach ($grados as $grado)
-                                        @if ($alumno->grado_id == $grado->id)
-                                            <td>{{ $alumno->grado_id }} {{ $grado->nombre }}</td>
-                                        @break
-                                    @endif
-                                @endforeach
-                                @foreach ($jornadas as $jornada)
-                                    @if ($alumno->jornada_id == $jornada->id)
-                                        <td>{{ $alumno->jornada_id }} {{ $jornada->nombre }}</td>
-                                    @break
-                                @endif
+
+                                    @can('getalumnoadd')
+                                        <form action="{{ route('colegio.alumno.delete', $alumno->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
+                                                    class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
+
+                                                <button class="btn btn-danger btn-sm" type="submit"
+                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar esta alumno?')"><i
+                                                        class="fa-solid fa-trash-can"
+                                                        style="color: #000000;"></i></button>
+                                        </form>
+                                        </td>
+                                    @endcan
+                                </tr>
                             @endforeach
-
-                            @can('getalumnoadd')
-                                <form action="{{ route('colegio.alumno.delete', $alumno->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <td><a href="{{ route('colegio.alumno.edit', $alumno->id) }}"
-                                            class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-
-
-                                        <button class="btn btn-danger btn-sm" type="submit"
-                                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta alumno?')"><i
-                                                class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
-                                </form>
-                                </td>
-                            @endcan
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </div>
-    </div>
-    </div>
 </div>
 </div>
-    
+
 
 
 

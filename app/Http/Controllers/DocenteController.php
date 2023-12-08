@@ -53,7 +53,7 @@ class DocenteController extends Controller
             $docentes = Docente::all();
             $personas = Persona::all();
             $data = ['docentes'=>$docentes,'personas'=>$personas];
-            return redirect()->route('mostrardocentes', $data)->with('agregado', 'Docente Agregado Exitosamente');
+            return redirect()->route('mostrardocentes', $data)->with('success', 'Docente Agregado Exitosamente');
         }
     }
 
@@ -88,7 +88,7 @@ class DocenteController extends Controller
         $personas = Persona::all();
         $jornadas = Jornada::all();
         $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
-        return redirect()->route('mostrardocentes', $data)->with('modificado', 'Docente actualizado correctamente');
+        return redirect()->route('mostrardocentes', $data)->with('success', 'Docente actualizado correctamente');
     }
     }
     public function getdocentedelete($id)
@@ -103,7 +103,7 @@ class DocenteController extends Controller
         $jornadas = Jornada::all();
         $docente->delete();
         $data = ['docente'=>$docente,'docentes'=>$docentes,'personas'=>$personas,'jornadas'=>$jornadas];
-        return redirect()->route('mostrardocentes', $data)->with('mensaje', 'Docente Eliminado Exitosamente');
+        return redirect()->route('mostrardocentes', $data)->with('success', 'Docente Eliminado Exitosamente');
     } else {
         return response()->json(['message' => 'No se encontró la persona'], 404);
     }

@@ -5,9 +5,6 @@
 
 @section('content')
     <main class="py-4"></main>
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">

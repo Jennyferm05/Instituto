@@ -45,7 +45,6 @@ class AlumnoController extends Controller
         $promedios = Calificacion::orderBy('promedio', 'desc')->pluck('promedio')->toArray();
 
         return view('colegio.alumnos.alumnos', compact('nombresAlumnos', 'promedios', 'alumnos', 'personas', 'jornadas', 'grados'));
-
     }
 
     public function getalumnoadd()
@@ -72,7 +71,7 @@ class AlumnoController extends Controller
             $jornadas = Jornada::all();
             $alumno->delete();
             $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'grados' => $grados, 'jornadas' => $jornadas];
-            return redirect()->route('mostraralumnos', $data)->with('agregado', 'Alumno Agregado Exitosamente');
+            return redirect()->route('mostraralumnos', $data)->with('success', 'Alumno Agregado Exitosamente');
         }
     }
 
@@ -97,8 +96,6 @@ class AlumnoController extends Controller
         $jornadas = Jornada::all();
 
         return view('colegio.alumnos.edit', compact('alumno', 'personas', 'grados', 'jornadas'));
-
-
     }
 
     public function postalumnoedit(Request $request, $id)
@@ -112,7 +109,7 @@ class AlumnoController extends Controller
 
         $alumno->save();
 
-        return redirect()->route('mostraralumnos')->with('modificado', 'Alumno actualizado correctamente');
+        return redirect()->route('mostraralumnos')->with('success', 'Alumno actualizado correctamente');
     }
     public function getalumnodelete($id)
     {
@@ -127,25 +124,9 @@ class AlumnoController extends Controller
             $jornadas = Jornada::all();
             $alumno->delete();
             $data = ['alumno' => $alumno, 'alumnos' => $alumnos, 'personas' => $personas, 'grados' => $grados, 'jornadas' => $jornadas];
-            return redirect()->route('mostraralumnos', $data)->with('mensaje', 'Alumno Eliminado Exitosamente');
+            return redirect()->route('mostraralumnos', $data)->with('success', 'Alumno Eliminado Exitosamente');
         } else {
             return response()->json(['message' => 'No se encontró la persona'], 404);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

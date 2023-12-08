@@ -89,7 +89,7 @@ class HorarioController extends Controller
         $horario->grado_id = $request->input('grado_id');
         $horario->save();
 
-        return redirect()->route('mostrarhorarios')->with('modificado', 'Horario Modificado Correctamente');
+        return redirect()->route('mostrarhorarios')->with('success', 'Horario Modificado Correctamente');
     }
 
     public function eliminar_horarios($id)
@@ -101,7 +101,7 @@ class HorarioController extends Controller
             $materias = Materia::all();
             $horario->delete();
             $data = ['horario' => $horario, 'materias' => $materias, 'grados' => $grados];
-            return redirect()->route('mostrarhorarios', $data)->with('mensaje', 'Horario Eliminado Con Exito!!');
+            return redirect()->route('mostrarhorarios', $data)->with('success', 'Horario Eliminado Con Exito!!');
         } else {
             return response()->json(['message' => 'No se encontró la persona'], 404);
         }

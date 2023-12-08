@@ -19,7 +19,7 @@
                         <p class="h5">Nombre:</p>
 
                         <p class="form-control">
-                            {{ $user->subnombre }}
+                            {{ $user->persona->primer_nombre }} {{ $user->persona->primer_apellido }}
                         </p>
 
                         <h2 class="h5">Listado roles</h2>
@@ -28,20 +28,16 @@
                         @foreach ($roles as $role)
                             <div>
                                 <label>
-                                    {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                    {!! Form::radio('selected_role', $role->id, $user->hasRole($role->name), ['class' => 'mr-1']) !!}
                                     {{ $role->name }}
                                 </label>
                             </div>
                         @endforeach
                         {!! Form::submit('Asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
-
-
+                        {!! Form::close() !!}
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
